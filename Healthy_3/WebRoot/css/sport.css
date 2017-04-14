@@ -1,0 +1,293 @@
+#page{
+    position:relative;
+	height:900px;
+	width:1360px;
+	background-color: #FFFFCC;
+}
+#logo{
+	height:110px;
+	width:200px;
+}
+
+#FitnessKnowledge{
+	position:absolute;
+	BORDER-RIGHT: 7px groove;
+	BORDER-TOP: 7px groove;
+	BACKGROUND: transprant;
+	BORDER-LEFT: 7px groove;
+	margin-left:100px;
+	height:180px;
+	width:280px;
+}
+#FitnessKnowledge a{
+	position:absolute;	  
+}
+
+#FitnessEat{
+	position:absolute;
+	BORDER-RIGHT: 7px groove; 
+	BORDER-TOP: 7px groove; 
+	BACKGROUND: transprant; 
+	BORDER-LEFT: 7px groove;
+	margin-left:415px;
+	height:180px;
+	width:280px;
+}
+#FitnessEat li{
+position:absolute;	
+	margin-top:25px;	
+}
+#u1 a{
+	width:230px;
+position:absolute;	
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space:nowrap;	
+}
+#u2 a{
+	width:230px;
+position:absolute;	
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space:nowrap;	
+}
+#FitnessKnowledge li{
+position:absolute;	
+	margin-top:25px;	
+}
+#f1{
+	margin-top: 10px;
+	width:70px;
+	margin-left:20px;
+	text-decoration: none;
+}
+#f2{
+	margin-top: 10px;
+	width:40px;
+	margin-left:210px;
+	text-decoration: none;
+}
+#f01{
+	width:70px;
+	margin-top: 10px;
+	margin-left:20px;
+	text-decoration: none;
+}
+#f02{
+	width:40px;
+	margin-top: 10px;
+	margin-left:210px;
+	text-decoration: none;
+}
+#FitnessKnowledge a:hover{
+	color:#f30;
+}
+#FitnessEat a:hover{
+	color:#f30;
+}
+#FitnessEat a{
+	position:absolute;	
+
+}
+#out_div ul{
+	
+	margin: 0;padding: 0;
+	list-style: none;
+        
+}
+#out_div li{
+	
+	margin: 0;padding: 0;
+	list-style: none;
+        
+}
+#out_div{
+	position:relative;
+	border: 1px solid #ccc;
+	width: 600px;
+	height: 370px;
+	background-color:gray;
+	margin-left:100px;
+	margin-top:0px;
+	
+	} 
+	#logo b {
+    position: relative;
+    margin-left: 15px;
+    top: -15px;
+    color: #FF5B4C;
+}
+	#title{
+    position:relative;
+	width: 500px;
+	height: 30px;
+	margin-top:-40px;
+	margin-left:100px;
+	}
+	#title p{
+    position:relative;
+		margin-left:5%;
+	}
+	   #out_div .banner{
+	   height:370px;
+	   position: relative;
+	   overflow: hidden;
+	   }
+       #out_div .banner li{
+		   position: absolute;
+		   width: 100%;
+		   left: 0;
+		   background-repeat: repeat-x;
+		   background-position: center;
+		   }
+       #out_div .banner img{
+		   width:600px;
+		   height:340px;
+		   z-index:1;
+		   }
+       #out_div .banner_li{
+		   position: absolute;
+		   left:85%;
+		   margin-top: -20px;
+		   }
+       #out_div .banner_li li{
+		   font-size:0;
+		   float: left;
+		   width:12px;
+		   height:12px;
+		   margin-left:7px;
+		   cursor: pointer;
+		   border-radius: 50%;
+		   background-color:#ddd;
+		   cursor: pointer;
+		   }
+       #out_div .banner_li .on_li{
+		   background-color:#f30;
+		   }
+#logo img{
+	position:relative;
+	margin-left:10px;	
+}
+#lr{
+	position:absolute;
+	margin-top:10px;
+	margin-left:1200px;
+	width:150px;
+	height:20px;
+	
+}
+
+#lr p{
+	position:absolute;
+	left:-100px;
+	width:150px;
+	
+	
+}
+#aaa {
+	position:absolute;
+	
+	width:100px;	
+}
+#aaa a{		
+	position:absolute;
+	width:35px;
+	color:#000;
+	text-decoration: none;
+}
+#aa0 {
+	position:absolute;
+	left:70px;
+	width:50px;	
+}
+#aa0 a{		
+	position:absolute;
+	width:35px;
+	color:#000;
+	text-decoration: none;
+}
+#aa1 {
+	position:absolute;
+	width:100px;
+	left:80px;
+	top:17px;
+	
+}
+#aa1 a{
+	position:absolute;	
+	width:40px;
+	font-size:15px;
+	color:#000;
+	text-decoration: none;
+}
+
+#lr a:hover{
+	color:#f30;
+}
+
+#nameInfo{
+	position:absolute;
+	text-decoration: none;
+}
+#personal{
+	position:absolute; 
+    border: 3px solid #F54;
+	margin-left:1045px;
+	background:white;
+	display:none;
+	margin-top:-470px;
+	height:140px;
+	width:220px;
+}
+
+#dhl{
+	position:absolute;
+	top:60px;
+	height:40px;
+	width:1366px;
+	background-color:#ff606d;
+	left: -7px;
+/*	border: #f30 solid 1px;*/
+}
+#dhl li{
+	float:left;
+	list-style-type:none;
+    
+}
+#dhl a{
+	position:relative;
+	display:block;
+	left:60px;
+	top:-14px;
+    padding:8px 25px;
+	font-weight:600;
+	margin-left:40px;
+	color:#fff;
+	text-decoration: none;
+}
+#dhl li a:hover{
+	color:#58FF58;
+/*background:#e4e4e4;*/
+}
+#dhl input{
+	position:absolute;
+	font-size:14px;
+	right:5%;
+	top:9px;
+	
+}
+
+#foot{
+	position:absolute;
+    bottom:-290px;
+	height:120px;
+	width:1366px;
+	background-color:#ff606d;
+	border: #f30 solid 1px;
+}
+#foot center p{
+	position:relative;
+	margin-top:70px;
+	color:#fff;
+	font-weight:500;
+}
