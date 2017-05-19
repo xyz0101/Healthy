@@ -1,0 +1,541 @@
+.d_body {
+    border-color: #F6D8A0;
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+  
+    font-size: 12px;
+}
+.d_body1 {
+    border-color: #F6D8A0;
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+    margin-left: 1%;
+    width: 95%;
+    font-size: 12px;
+}
+.all_order_checkbox {
+		display:none;
+	width:100px;
+	margin-left: 1%;
+	margin-top:2%;
+	
+}
+.all_order_checkbox1 {
+		display:none;
+	width:100px;
+	margin-left: 1%;
+	margin-top:2%;
+	
+}
+.pagination{
+	margin-top:30px;
+		display:none;
+	margin-left: 30%;
+	
+}
+.pagination1{
+	margin-top:30px;
+		display:none;
+	margin-left: 30%;
+	
+}
+
+
+.pagination2{
+	margin-top:30px;
+		display:none;
+	margin-left: 30%;
+	
+}
+
+.delete_block{
+	display:none;
+	 border:solid;   
+           font-size:16px;
+          margin-top:-25px;
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:80px;
+            height:25px;
+	margin-left: 70%
+	
+}
+.delete_block input{
+	 border:solid;   
+           font-size:16px;
+          
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:78px;
+            height:23px;	
+}
+
+.pay_block{
+	display:none;
+	 border:solid;   
+           font-size:16px;
+          margin-top:-25px;
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:80px;
+            height:25px;
+	margin-left: 85%
+	
+}
+.pay_block input{
+	 border:solid;   
+           font-size:16px;
+          
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:78px;
+            height:23px;	
+}
+
+.delete_block1{
+	display:none;
+	 border:solid;   
+           font-size:16px;
+          margin-top:-25px;
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:80px;
+            height:25px;
+	margin-left: 70%
+	
+}
+.delete_block1 input{
+	 border:solid;   
+           font-size:16px;
+          
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:78px;
+            height:23px;	
+}
+
+
+
+
+    #d_detail_01 li{
+     margin: 0px;
+        padding: 0px;
+        list-style: none;
+       
+        width: 12%;
+        text-align: center;
+        display: list-item;
+    }
+    .d_block li{
+     margin: 0px;
+        padding: 0px;
+        list-style: none;
+       
+        width: 12%;
+        text-align: center;
+        display: list-item;
+         float: left;
+    }
+
+.d_head {
+    height: 7%;
+    padding: 0 3px 0 0;
+    background-color: #F6D8A0;
+    line-height: 37px;
+}
+
+.d_left {
+    width: 20%;
+    float: left;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #F1D091;
+    height: 93%;
+}
+
+.d_right {
+	overflow-y:auto;
+    float: left;
+    width: 80%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #F1D091;
+    height: 93%;
+}
+
+.d_nickname {
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size:18px;
+    font-weight:600;
+}
+
+.d_block {
+    border-color: #F8DBA3;
+    border-width: 0 0 1px;
+    border-style: solid;
+    height: 25px !important;
+}
+#01{
+ border-bottom-color: #FFFFFF;
+}
+#02{
+ border-bottom-color: #F8DBA3;
+}
+#04{
+ border-bottom-color: #F8DBA3;
+}
+#03{
+ border-bottom-color: #F8DBA3;
+}
+
+.choose {
+    border-style: solid;
+    border-width: 1px;
+        border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+      border-color: #F8DBA3;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+
+    _position: relative;
+    _bottom: -1px;
+  
+    text-decoration: none;
+    background-color: #FFFDF1;
+    color: #444444;
+    cursor: pointer;
+    
+   
+       
+}
+
+    .choose:hover {
+        text-decoration: none;
+    }
+
+#d_detail_01 {
+    width: 100%;
+    height: 89%;
+    background-color: none;
+    display: block;
+}
+
+#d_detail_02 {
+    width: 100%;
+    min-height: 10%;
+    margin-top:20px;
+    background-color: none;
+    display: none;
+}
+#e_detail_01 {
+    width: 100%;
+    margin-top:-4%;
+    height: 89%;
+    background-color: none;
+    display: block;
+}
+#d_detail_03 {
+	 width: 100%;
+    min-height: 10%;
+    margin-top:20px;
+    background-color: none;
+    display: none;
+	
+}
+
+#d_detail_04 {
+     width: 100%;
+    min-height: 10%;
+    margin-top:60px;
+    background-color: none;
+    display: none;
+}
+#d_detail_01 ul{
+ 
+    display: block;
+    list-style-type: disc;
+      height: 89%;
+    -webkit-padding-start: 40px;
+}
+#d_detail_01 li{
+        display: list-item;
+    margin-bottom: 10px; 
+}
+#d_detail_01 label{
+    text-align:left;
+    line-height: 22px;
+    display: block;
+    width: 108px;
+    height: 22px;
+    float: left;
+    cursor: default;
+}
+.preview_option {
+    text-align:left;
+    width:200px;
+        line-height: 22px;
+    margin-left: 120px;
+}
+.title{
+        font-weight: bold;
+        width:89%;
+        margin-top:2%;
+        margin-left:5%;
+        font-size:12px;
+        border-style: solid;
+        border-color:white;
+        border-width: 1px;
+         border-bottom-color: #F8DBA3;
+}
+.up_head{
+        word-break: normal;
+    word-wrap: break-word;
+    margin-left:23%;
+    margin-top:10%;
+}
+#edit_icon_info{
+     margin-left:16%;
+    margin-top:10%;
+}
+  #d_detail_04     .order_table {
+		
+               background: #fcfcfc;
+        }
+     #d_detail_04     .order_table  .order{
+                content: '\0020';
+    display: block;
+    height: 80px;
+    clear: both;
+    margin-left:0px;
+        }
+  #d_detail_04 .order_table  .order_check{
+    float:left;
+}
+  #d_detail_04 .order_table .order_img{
+    float:left;
+}
+  #d_detail_04 .order_table .order_number{
+    float:left;
+}
+  #d_detail_04 .order_table .order_place{
+    float:left;
+}
+  #d_detail_04 .order_table .order_price{
+     float:left;
+
+ }
+  #d_detail_04 .order_table .order_time{
+      float:left;
+  }
+   #d_detail_04 .order_table  .delete_order{
+      float:left;
+  }
+     #d_detail_04 .order_table  .pay_order{
+      float:left;
+  }
+    #d_detail_04 .order_table .order_checkbox{
+      width:30px;
+      height:80px;
+  }
+    #d_detail_04 .order_table .order_checkbox input{
+     margin-top:35px;
+     margin-left:10px
+  }
+   #d_detail_04 .order_table  .img_block{
+      float:left;
+      width:60px;
+      height:60px;
+  }
+  #d_detail_04    .order_table  .img_block img{
+     margin:10px 10px 0px 0px;
+      width:60px;
+      height:60px;
+  }
+   #d_detail_04  .order_table .img_sum{
+      float:left;
+        width:230px;
+      height:80px;
+  }
+   #d_detail_04   .order_table  .img_sum .summary{
+     
+      margin-left:20px;
+      margin-top:20px;
+  }
+   #d_detail_04 .order_table  .summary{
+    float:left;
+      width:110px;
+      height:40px;
+  }
+   #d_detail_04  .order_table   .place{
+         width:200px;
+      height:80px;
+  }
+    #d_detail_04 .order_table   .time{
+         width:150px;
+      height:80px;
+    }
+
+   #d_detail_04  .order_table   .delete{
+            width:80px;
+      height:80px;
+
+    }
+      #d_detail_04  .order_table   .pay{
+            width:80px;
+      height:80px;
+
+    }
+   #d_detail_04  .order_table   .number{
+           width:50px;
+      height:80px;
+    }
+  #d_detail_04 	 .order_table   .price{
+           width:50px;
+      height:80px;
+    }
+   #d_detail_04  .order_table ul  li{
+     border: ridge thin;
+     margin:0px;
+        list-style:none;
+    }
+   #d_detail_04  .order_table   ul p,a,div,li,input{
+        margin:0px;
+        padding:0px;
+    }
+     #d_detail_04  .order_table   ul {
+        margin:0px;
+        padding:0px;
+    }
+   #d_detail_02     .order_table {
+		
+               background: #fcfcfc;
+        }
+     #d_detail_02     .order_table  .order{
+                content: '\0020';
+    display: block;
+    height: 80px;
+    clear: both;
+    margin-left:0px;
+        }
+  #d_detail_02 .order_table  .order_check{
+    float:left;
+}
+  #d_detail_02 .order_table .order_img{
+    float:left;
+}
+  #d_detail_02 .order_table .order_number{
+    float:left;
+}
+  #d_detail_02 .order_table .order_place{
+    float:left;
+}
+  #d_detail_02 .order_table .order_price{
+     float:left;
+
+ }
+  #d_detail_02 .order_table .order_time{
+      float:left;
+  }
+   #d_detail_02 .order_table  .delete_order{
+      float:left;
+  }
+     #d_detail_02 .order_table  .pay_order{
+      float:left;
+  }
+    #d_detail_02 .order_table .order_checkbox{
+      width:30px;
+      height:80px;
+  }
+    #d_detail_02 .order_table .order_checkbox input{
+     margin-top:35px;
+     margin-left:10px
+  }
+   #d_detail_02 .order_table  .img_block{
+      float:left;
+      width:60px;
+      height:60px;
+  }
+  #d_detail_02    .order_table  .img_block img{
+     margin:10px 10px 0px 0px;
+      width:60px;
+      height:60px;
+  }
+   #d_detail_02  .order_table .img_sum{
+      float:left;
+        width:230px;
+      height:80px;
+  }
+   #d_detail_02   .order_table  .img_sum .summary{
+     
+      margin-left:20px;
+      margin-top:20px;
+  }
+   #d_detail_02 .order_table  .summary{
+    float:left;
+      width:110px;
+      height:40px;
+  }
+   #d_detail_02  .order_table   .place{
+         width:200px;
+      height:80px;
+  }
+    #d_detail_02 .order_table   .time{
+         width:150px;
+      height:80px;
+    }
+
+   #d_detail_02  .order_table   .delete{
+            width:80px;
+      height:80px;
+
+    }
+      #d_detail_02  .order_table   .pay{
+            width:80px;
+      height:80px;
+
+    }
+   #d_detail_02  .order_table   .number{
+           width:50px;
+      height:80px;
+    }
+  #d_detail_02 	 .order_table   .price{
+           width:50px;
+      height:80px;
+    }
+   #d_detail_02  .order_table ul  li{
+     border: ridge thin;
+     margin:0px;
+        list-style:none;
+    }
+   #d_detail_02  .order_table   ul p,a,div,li,input{
+        margin:0px;
+        padding:0px;
+    }
+     #d_detail_02  .order_table   ul {
+        margin:0px;
+        padding:0px;
+    }

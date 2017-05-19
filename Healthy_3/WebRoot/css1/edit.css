@@ -1,0 +1,60 @@
+ 
+ .base_detail{
+ margin-top: 3%;
+  margin-left: 3%;
+ }
+ #e_detail_01 table {
+         margin-left:10%;
+            border-collapse: collapse;
+            margin-top:5%;
+            width:80%;
+                 font-size:10px;
+        }
+
+        #e_detail_01 input {
+             border-width: 1px;
+    border-style: solid;
+    border-color: #F1D091;
+     font-size:10px;
+        }
+
+        #e_detail_01  td {
+            border-collapse: collapse;
+              padding-top: 15px;
+            padding-bottom: 15px;
+        } 
+        #e_detail_01 table tr {
+        border-width: 1px;
+    border-bottom-style: solid;
+    border-color: #F1D091;
+        }
+
+        #e_detail_01 .base_title {
+            width: 78px;
+            vertical-align: top;
+            line-height: 21px;
+        }
+         #e_detail_01 .select_small {
+            width: 88px;
+            vertical-align: top;
+            line-height: 21px;
+        }
+        #tname{
+        margin-top: -4%;
+        }
+            #tphone{
+        margin-top: -4%;
+        }
+        #save{
+            font-size: 14px;
+    height: 26px;
+    padding: 0 7px;
+    vertical-align: -2px;
+    width: 92px;
+    margin-left:20%;
+    color: #FFFFFF;
+    border: 1px solid #E3A355;
+    background-color: #F7AF57;
+    background-position: 0 0;
+        }
+        

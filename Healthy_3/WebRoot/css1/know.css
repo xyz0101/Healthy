@@ -1,0 +1,21 @@
+.list_title{
+  float:left;
+   margin-left:2%;
+    width:20%;
+}
+.list_title h3{
+    margin:0;
+    padding:0;
+
+}
+.list_a {
+     float:left;
+     margin-left:60%;
+    width:10%;
+}
+._br1{
+    height:5%;
+}
+._br{
+    height:15%;
+}

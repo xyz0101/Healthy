@@ -1,0 +1,133 @@
+ .comment p{
+            font-size:14px;
+        }
+        .comment{
+           margin-top:20px;
+        }
+        .content {
+            width: 70%;
+             word-break: break-all;
+            margin-top: -40px;
+        }
+        .more{
+     /*   display:none;*/
+        margin-left:40%;
+        }
+         .more a{
+        cursor: pointer;
+        text-decoration:none;
+        color: gray;
+        }
+
+            .content p {
+                word-break: break-all;
+                margin-top: -20px;
+                margin-left: 70px;
+                padding: 0;
+            }
+
+        .c_reply p {
+            width: 100%;
+            word-break: break-all;
+            margin-top: -20px;
+            margin-left: 70px;
+            padding: 0;
+        }
+ 		.c_reply{
+            word-break: break-all;
+            margin-top: 10px;
+           
+        }
+        .content a {
+        }
+
+        .comment_content {
+      
+            width:80%;
+            margin-left: 50px;
+            background-color:#eaeaec;
+        }
+
+        .comment_time {
+        margin-top:10px;
+            width: 100%;
+            font-size:13px;
+        }
+  .time {
+            margin-bottom: 10px;
+        }
+        .reply_block{
+       
+         display:none;
+        background-color:#eaeaec;
+        width: 80%;
+        min-height:80px;
+        
+        }
+        .reply_block_display{
+       
+        background-color:#eaeaec;
+        width: 80%;
+        min-height:80px;
+        
+        }
+        .R_input{
+        word-break: break-all;
+         	margin-top:10px;
+             margin-left:30px;
+            width:480px;
+            height:60px;
+            border-style:none;
+            border:solid;   
+            border-color:orange;
+            border-width:1px;
+        }
+        .reply_btn{
+        display:none;
+        width: 100px;
+       margin-left: 470px;
+        height:30px;
+            border:solid;
+           margin-left:500px;
+             border-color:orange;
+            border-width:1px;
+       
+        }
+        .reply_btn_display{
+       
+        width: 100px;
+       margin-left: 470px;
+        height:30px;
+            border:solid;
+           margin-left:500px;
+             border-color:orange;
+            border-width:1px;
+       
+        }
+        .reply_btn_display input
+        {
+       border:solid;   
+           font-size:16px;
+          
+            border-color:orange;
+            border-width:1px;
+             align-content:center;
+             background-color:orange;
+             
+            width:98px;
+            height:28px;
+       
+        }
+        .reply {
+            margin-left: 68%;
+            margin-top: -22px;
+        }
+
+        .reply_content ul li {
+            width:70%;
+            margin-left:50px;
+            list-style: none;
+            border-top:solid;
+            border-top-color:gray;
+            border-top-width:1px;
+        }
