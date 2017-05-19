@@ -11,4 +11,6 @@ public interface StadiumPlaceService {
 		public StadiumPlace findbyid(String placeid);
 		public void delete(StadiumPlace stadiumplace);
 		public void update(StadiumPlace stadiumplace);
+		public List findAll();
+		public List findByname(String name);
 }

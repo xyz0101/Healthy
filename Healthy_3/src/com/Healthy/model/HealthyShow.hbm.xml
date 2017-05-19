@@ -10,26 +10,26 @@
             <column name="show_id" length="50" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="stadiumMain" class="com.Healthy.model.StadiumMain" fetch="select">
-            <column name="stadium_id" length="50" not-null="true" />
-        </many-to-one>
-        <property name="userId" type="java.lang.String">
-            <column name="user_id" length="50" not-null="true" />
-        </property>
-        <property name="showTitle" type="java.lang.String">
-            <column name="show_title" length="100" />
+        <property name="showUser" type="java.lang.String">
+            <column name="show_user" length="50" not-null="true" />
         </property>
         <property name="showTag" type="java.lang.String">
-            <column name="show_tag" length="20" not-null="true" />
+            <column name="show_tag" length="20" />
         </property>
         <property name="showContent" type="java.lang.String">
             <column name="show_content" length="500" not-null="true" />
         </property>
-        <property name="showTime" type="java.util.Date">
-            <column name="show_time" length="10" not-null="true" />
+        <property name="showTime" type="java.sql.Timestamp">
+            <column name="show_time" length="19" not-null="true" />
         </property>
         <property name="showLocation" type="java.lang.String">
-            <column name="show_location" length="250" not-null="true" />
+            <column name="show_location" length="250" />
+        </property>
+        <property name="showImage" type="java.lang.String">
+            <column name="show_image" length="500" />
+        </property>
+        <property name="showAgree" type="java.lang.Integer">
+            <column name="show_agree" />
         </property>
         <set name="showReplies" inverse="true">
             <key>

@@ -12,10 +12,12 @@ import org.springframework.stereotype.Repository;
 import com.Healthy.dao.StadiumPlaceDAO;
 import com.Healthy.model.StadiumMain;
 import com.Healthy.model.StadiumPlace;
+import com.util.Utils;
 @Repository
 public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 		StadiumPlaceDAO {
 	private static final String FIND_BY_ID="from StadiumPlace s where s.placeId like ?";
+	private static final String FIND_BY_NAME="from StadiumPlace s where s.placeName like ?";
 	private static final String FIND_BY_SM="from StadiumPlace s where s.stadiumId like ?"; 
 	private static final String FIND_BY_StM="from StadiumPlace s where s.stadiumMain like ?";
 	StadiumPlaceDAO stadiumplacedao;
@@ -25,7 +27,6 @@ public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 	}
 	@Override
 	public void add(StadiumPlace stadiumplace) {
-		// TODO Auto-generated method stub
 			HibernateTemplate tmp = getHibernateTemplate();
 			tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 			tmp.save(stadiumplace);
@@ -33,14 +34,12 @@ public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 	}
 	@Override
 	public List findbyStadiumId(String stadiumid) {
-		// TODO Auto-generated method stub
 		HibernateTemplate tmp = this.getHibernateTemplate();
 		tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 		return tmp.find(FIND_BY_SM, stadiumid);
 	}
 	@Override
 	public void delete(StadiumPlace stadiumplace) {
-		// TODO Auto-generated method stub
 		HibernateTemplate tmp = this.getHibernateTemplate();
 		tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 		tmp.delete(stadiumplace);
@@ -48,7 +47,6 @@ public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 	}
 	@Override
 	public void update(StadiumPlace stadiumplace) {
-		// TODO Auto-generated method stub
 				HibernateTemplate tmp = this.getHibernateTemplate();
 				tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 				tmp.update(stadiumplace);
@@ -56,7 +54,6 @@ public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 	}
 	@Override
 	public StadiumPlace findbyid(String placeid) {
-		// TODO Auto-generated method stub
 				HibernateTemplate tmp = this.getHibernateTemplate();
 				tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 				return (StadiumPlace) tmp.find(FIND_BY_ID, new String[]{placeid}).get(0);
@@ -67,6 +64,14 @@ public class StadiumPlaceDAOImpl extends HibernateDaoSupport implements
 		HibernateTemplate tmp = this.getHibernateTemplate();
 		tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
 		return (List<StadiumPlace>) tmp.find(FIND_BY_StM, stadiummain);
+	}
+	@Override
+	public List findAll() {
+		return this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from StadiumPlace").list();
+	}
+	@Override
+	public List findByname(String placename) {
+		return Utils.findInHQL(this, FIND_BY_NAME, new String[]{placename});
 	}
 
 }

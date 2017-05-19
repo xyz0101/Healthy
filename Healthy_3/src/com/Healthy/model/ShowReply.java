@@ -12,9 +12,11 @@ public class ShowReply implements java.io.Serializable {
 
 	private String replyId;
 	private HealthyShow healthyShow;
-	private String userId;
+	private String replyUser;
 	private String replyContent;
 	private Timestamp replyTime;
+	private String replyImage;
+	private Integer replyAgree;
 
 	// Constructors
 
@@ -22,14 +24,27 @@ public class ShowReply implements java.io.Serializable {
 	public ShowReply() {
 	}
 
-	/** full constructor */
-	public ShowReply(String replyId, HealthyShow healthyShow, String userId,
+	/** minimal constructor */
+	public ShowReply(String replyId, HealthyShow healthyShow, String replyUser,
 			String replyContent, Timestamp replyTime) {
 		this.replyId = replyId;
 		this.healthyShow = healthyShow;
-		this.userId = userId;
+		this.replyUser = replyUser;
 		this.replyContent = replyContent;
 		this.replyTime = replyTime;
+	}
+
+	/** full constructor */
+	public ShowReply(String replyId, HealthyShow healthyShow, String replyUser,
+			String replyContent, Timestamp replyTime, String replyImage,
+			Integer replyAgree) {
+		this.replyId = replyId;
+		this.healthyShow = healthyShow;
+		this.replyUser = replyUser;
+		this.replyContent = replyContent;
+		this.replyTime = replyTime;
+		this.replyImage = replyImage;
+		this.replyAgree = replyAgree;
 	}
 
 	// Property accessors
@@ -50,12 +65,12 @@ public class ShowReply implements java.io.Serializable {
 		this.healthyShow = healthyShow;
 	}
 
-	public String getUserId() {
-		return this.userId;
+	public String getReplyUser() {
+		return this.replyUser;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setReplyUser(String replyUser) {
+		this.replyUser = replyUser;
 	}
 
 	public String getReplyContent() {
@@ -72,6 +87,22 @@ public class ShowReply implements java.io.Serializable {
 
 	public void setReplyTime(Timestamp replyTime) {
 		this.replyTime = replyTime;
+	}
+
+	public String getReplyImage() {
+		return this.replyImage;
+	}
+
+	public void setReplyImage(String replyImage) {
+		this.replyImage = replyImage;
+	}
+
+	public Integer getReplyAgree() {
+		return this.replyAgree;
+	}
+
+	public void setReplyAgree(Integer replyAgree) {
+		this.replyAgree = replyAgree;
 	}
 
 }

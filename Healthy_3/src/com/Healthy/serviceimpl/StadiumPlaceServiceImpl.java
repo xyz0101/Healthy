@@ -21,19 +21,16 @@ public class StadiumPlaceServiceImpl implements StadiumPlaceService{
 
 		@Override
 		public List findbyStadiumId(String stadiumid) {
-			// TODO Auto-generated method stub
 			return  stadiumplacedao.findbyStadiumId(stadiumid);
 		}
 
 		@Override
 		public void delete(StadiumPlace stadiumplace) {
-			// TODO Auto-generated method stub
 			stadiumplacedao.delete(stadiumplace);
 		}
 
 		@Override
 		public void update(StadiumPlace stadiumplace) {
-			// TODO Auto-generated method stub
 			stadiumplacedao.update(stadiumplace);
 		}
 
@@ -47,6 +44,16 @@ public class StadiumPlaceServiceImpl implements StadiumPlaceService{
 		public List<StadiumPlace> findbyStadiumMain(StadiumMain stadiummain) {
 		return	stadiumplacedao.findbyStadiumMain(stadiummain);
 		
+		}
+
+		@Override
+		public List findAll() {
+			return stadiumplacedao.findAll();
+		}
+
+		@Override
+		public List findByname(String name) {
+			return stadiumplacedao.findByname(name);
 		}
 		
 }

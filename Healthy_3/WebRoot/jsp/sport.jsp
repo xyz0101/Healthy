@@ -15,7 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css1/style.css" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="js1/jquery.min.js"></script>
 <!--<script src="js1/jquery.easydropdown.js"></script>-->
@@ -73,8 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    <ul class="nav" id="nav">
 						    	<li><a href="tosport">首页</a></li>
 						    	<li><a href="Tosportproject">运动项目</a></li>
-						    	<li><a href="shop.html">运动日历</a></li>
-						    	<li><a href="experiance.html">运动社区</a></li>
+						    	<li><a href="toHealthyKnow">健身常识</a></li>
+						    	<li><a href="toAllSpace">运动社区</a></li>
 						    	
 								<li><a href="contact.html">联系我们</a></li>									
 								<div class="clear"></div>
@@ -104,17 +103,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <ul class="icon1 sub-icon1 profile_img">
 					 <li><a class="active-icon c1" href="#"> </a>
 						<ul class="sub-icon1 list">
-						  <div class="product_control_buttons">
-						  	<a href="#"><img src="img/edit.png" alt=""/></a>
+						  <c:choose>
+  					<c:when test="${sessionScope.user1==null}">
+  					
+  					  <div class="product_control_buttons">
+						   <!--  	<a href="#"><img src="img/edit.png" alt=""/></a>-->
 						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
 						  </div>
 						   <div class="clear"></div>
-						     
-						 <c:choose>
-  					<c:when test="${sessionScope.user1==null}">
   					 <li class="list_img"><img src="img/1.jpg" width="50px" height="50px"  alt=""/></li>
-						  
-						  <li class="list_desc"><h4 ><a id="userinfo" href="#">游客你好！</a></h4><span class="actual">
+						 
+						  <li class="list_desc"><h4 ><a id="userinfo"name="" href="javascript:;">游客你好！</a></h4><span class="actual">
                           </span></li>
 						  <div class="login_buttons">
 							 <div class="check_button"><a href="ToRegister">注册</a></div>
@@ -124,9 +123,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  <div class="clear"></div>
 						  </c:when>
 						  <c:otherwise>
+						  <div class="product_control_buttons">
+						  	<a href="toEditDetail"><img src="img/edit.png" alt=""/></a>
+						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
+						  </div>
+						   <div class="clear"></div>
+						  
 						   <li class="list_img"><img src="${sessionScope.user1.getUserPic().getUserPic()}" width="50px" height="50px"  alt=""/></li>
 						  
-						   <li class="list_desc"><h4 ><a id="userinfo" href="#">${sessionScope.user1.userNickname}</a></h4><span class="actual">
+						   <li class="list_desc"><h4 ><a id="userinfo" name="${sessionScope.user1.userId}" href="toIndividual">${sessionScope.user1.userNickname}</a></h4><span class="actual">
                           15级</span></li>
 						  <div class="login_buttons">
 							<!--  <div class="check_button"><a href="Register">注册</a></div> -->
@@ -160,7 +165,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <!-- Text title -->
                         <h1 class="title">Run Over<br>Everything</h1>
                         <!-- /Text title -->
-                        <div class="button"><a href="#">See Details</a></div>
                     </div>
                 </div>
                <!-- /Texts container -->
@@ -171,7 +175,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <h1 class="title">Run Over<br>Everything</h1>
-                       	<div class="button"><a href="#">See Details</a></div>
                     </div>
                 </div>
             </div>
@@ -184,193 +187,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <!--/slider -->
       </div>
 	  <div class="main">
-		<div class="content-top">
-			<h2>snowboards</h2>
-			<p>hendrerit in vulputate velit esse molestie consequat, vel illum dolore</p>
-			<div class="close_but"><i class="close1"> </i></div>
-				<ul id="flexiselDemo3">
-				<li><img src="img/board1.jpg" /></li>
-				<li><img src="img/board2.jpg" /></li>
-				<li><img src="img/board3.jpg" /></li>
-				<li><img src="img/board4.jpg" /></li>
-				<li><img src="img/board5.jpg" /></li>
-			</ul>
-		<h3>SnowBoard Extreme Series</h3>
-			<script type="text/javascript">
-		$(window).load(function() {
-			$("#flexiselDemo3").flexisel({
-				visibleItems: 5,
-				animationSpeed: 1000,
-				autoPlay: true,
-				autoPlaySpeed: 3000,    		
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-		    	responsiveBreakpoints: { 
-		    		portrait: { 
-		    			changePoint:480,
-		    			visibleItems: 1
-		    		}, 
-		    		landscape: { 
-		    			changePoint:640,
-		    			visibleItems: 2
-		    		},
-		    		tablet: { 
-		    			changePoint:768,
-		    			visibleItems: 3
-		    		}
-		    	}
-		    });
-		    
-		});
+		
+		</br></br></br>
+		<script type="text/javascript">
+		$(function(){
+		$(".content-bottom").css("background", "url("+"${requestScope.advice.adviceImg }"+")no-repeat center top")
+		$(".content-bottom").css("background-size", " 100% auto");
+		})		
 		</script>
-		<script type="text/javascript" src="js1/jquery.flexisel.js"></script>
-		</div>
-	</div>
-	<div class="content-bottom">
+	<h3 class="m_3">体育运动</h3>
+ <div class="content-bottom" >
+ 
 		<div class="container">
-			<div class="row content_bottom-text">
+		
+			<div class="row content_bottom-text" style="margin-top:-15%">
 			  <div class="col-md-7">
-				<h3>The Mountains<br>Snowboarding</h3>
-				<p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
-				<p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
+				<h3>运动知识<br>${requestScope.advice.adviceTitle }</h3>
+				<p class="m_1">${requestScope.advice.adviceContent }</p>
 			  </div>
 			</div>
 		</div>
 	</div>
+	
 	<div class="features">
 		<div class="container">
-			<h3 class="m_3">features</h3>
+			<h3 class="m_3">运动场所推荐</h3>
 			<div class="close_but"><i class="close1"> </i></div>
-			  <div class="row">
-				<div class="col-md-3 top_box">
-				  <div class="view view-ninth"><a href="single.html">
-                    <img src="img/pic1.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                   </a>
-                   
-                   
-                 
-                  <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                  <p class="m_5">claritatem insitam</p>
-                  </div>
-                </div>
+			  <div class="row" >
+			  <c:forEach items="${requestScope.beststadium }" begin="0" end="3" var="best" varStatus="status">
                 <div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="img/pic2.jpg" class="img-responsive" alt=""/>
+					<div class="view view-ninth"><a href="ToStadium_Detail1?id=${best.stadiumId }">
+                    <img src="${best.stadiumPhoto }" class="img-responsive" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
+                        <h2>${best.stadiumName }</h2>
+                        <p>${best.stadiumIntroduction }</p>
                       </div>
                     </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
+                   <h4 class="m_4"><a href="#">${best.stadiumName }</a></h4>
+                   <p class="m_5">价格区间：${best.stadiumPrice }</p>
 				</div>
-				<div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="img/pic3.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                    </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
-				</div>
-				<div class="col-md-3 top_box1">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="img/pic4.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                     </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
-				</div>
+				</c:forEach>
 				 </div>
 			</div>
 		 </div>
-	    </div>
+	    
 		<div class="footer">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Products</h4>
-							<li><a href="#">Mens</a></li>
-							<li><a href="#">Womens</a></li>
-							<li><a href="#">Youth</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Newsletter</h4>
-							<div class="footer_search">
-				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
-				    		   </form>
-					        </div>
-							<ul class="social">	
-							  <li class="facebook"><a href="#"><span> </span></a></li>
-							  <li class="twitter"><a href="#"><span> </span></a></li>
-							  <li class="instagram"><a href="#"><span> </span></a></li>	
-							  <li class="pinterest"><a href="#"><span> </span></a></li>	
-							  <li class="youtube"><a href="#"><span> </span></a></li>										  				
-						    </ul>
-		   					
-						</ul>
-					</div>
-				</div>
-				<div class="row footer_bottom">
-				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-		            </div>
-					  <dl id="sample" class="dropdown">
-				        <dt><a href="#"><span>Change Region</span></a></dt>
-				        <dd>
-				            <ul>
-				                <li><a href="#">Australia<img class="flag" src="img/as.png" alt="" /><span class="value">AS</span></a></li>
-				                <li><a href="#">Sri Lanka<img class="flag" src="img/srl.png" alt="" /><span class="value">SL</span></a></li>
-				                <li><a href="#">Newziland<img class="flag" src="img/nz.png" alt="" /><span class="value">NZ</span></a></li>
-				                <li><a href="#">Pakistan<img class="flag" src="img/pk.png" alt="" /><span class="value">Pk</span></a></li>
-				                <li><a href="#">United Kingdom<img class="flag" src="img/uk.png" alt="" /><span class="value">UK</span></a></li>
-				                <li><a href="#">United States<img class="flag" src="img/us.png" alt="" /><span class="value">US</span></a></li>
-				            </ul>
-				         </dd>
-	   				  </dl>
-   				</div>
+				
 			</div>
+		</div>
 		</div>
 </body>	
 </html>

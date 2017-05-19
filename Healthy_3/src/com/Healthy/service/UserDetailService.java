@@ -10,4 +10,8 @@ import com.Healthy.model.UserDetail;
 import com.Healthy.model.UserMain;
 public interface UserDetailService {
 	public void add(UserDetail userdetail);
+	public void update(UserDetail userdetail);
+	public UserDetail findByUserId(String userid);
+	public List findByUserPhone(String phone);
+	public List findAll();
 }

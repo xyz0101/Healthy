@@ -14,8 +14,8 @@ public class UserMain implements java.io.Serializable {
 	private String userId;
 	private String userNickname;
 	private String userPassword;
-	private Boolean userSex;
-	private Boolean userStatus;
+	private String userSex;
+	private String userStatus;
 	private Set stadiumMains = new HashSet(0);
 	private UserDetail userDetail;
 	private UserPic userPic;
@@ -28,14 +28,17 @@ public class UserMain implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public UserMain(String userId, String userPassword) {
+	public UserMain(String userId, String userNickname, String userPassword,
+			String userStatus) {
 		this.userId = userId;
+		this.userNickname = userNickname;
 		this.userPassword = userPassword;
+		this.userStatus = userStatus;
 	}
 
 	/** full constructor */
 	public UserMain(String userId, String userNickname, String userPassword,
-			Boolean userSex, Boolean userStatus, Set stadiumMains,
+			String userSex, String userStatus, Set stadiumMains,
 			UserDetail userDetail, UserPic userPic, Set userOperates) {
 		this.userId = userId;
 		this.userNickname = userNickname;
@@ -74,19 +77,19 @@ public class UserMain implements java.io.Serializable {
 		this.userPassword = userPassword;
 	}
 
-	public Boolean getUserSex() {
+	public String getUserSex() {
 		return this.userSex;
 	}
 
-	public void setUserSex(Boolean userSex) {
+	public void setUserSex(String userSex) {
 		this.userSex = userSex;
 	}
 
-	public Boolean getUserStatus() {
+	public String getUserStatus() {
 		return this.userStatus;
 	}
 
-	public void setUserStatus(Boolean userStatus) {
+	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
 	}
 

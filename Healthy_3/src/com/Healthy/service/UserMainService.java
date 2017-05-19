@@ -10,6 +10,7 @@ import com.Healthy.model.UserDetail;
 import com.Healthy.model.UserMain;
 public interface UserMainService {
 	public void add(UserMain user);
+	public void update(UserMain user);
 	public void delete(UserMain user);
 	public UserMain find(String name);
 	public UserMain findId(String id);

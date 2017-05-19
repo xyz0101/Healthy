@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Healthy.model.HealthyShow;
+import com.Healthy.model.Page;
 import com.Healthy.service.HealthyShowService;
 import com.Healthy.dao.HealthyShowDAO;
 @Service
@@ -14,23 +15,38 @@ public class HealthyShowServiceImpl implements HealthyShowService {
 	HealthyShowDAO healthyshowdao;
 	@Override
 	public void add(HealthyShow healthyshow) {
-		// TODO Auto-generated method stub
 		healthyshowdao.add(healthyshow);
 	}
 	@Override
 	public List<HealthyShow> findall() {
-		// TODO Auto-generated method stub
 		return healthyshowdao.find();
 	}
 	@Override
 	public HealthyShow findOne(String id) {
-		// TODO Auto-generated method stub
-		return (HealthyShow) healthyshowdao.findOne(id);
+		return (HealthyShow) healthyshowdao.findOne(id).get(0);
+	}
+	
+	
+	@Override
+	public List<HealthyShow> findByUserId(String userid) {
+		return healthyshowdao.findByUserId(userid);
 	}
 	@Override
-	public void deleteOne(HealthyShow healthyshow) {
-		// TODO Auto-generated method stub
-		healthyshowdao.delete(healthyshow);
+	public List<HealthyShow> findByDiffDay(String diffday) {
+		return healthyshowdao.findByDiffDay(diffday);
+	}
+	@Override
+	public List<HealthyShow> findByDiffMonth(String diffmonth) {
+		return healthyshowdao.findByDiffMonth(diffmonth);
+	}
+	@Override
+	public void delete(HealthyShow healthyshow) {
+		 healthyshowdao.delete(healthyshow);
+		
+	}
+	@Override
+	public List<HealthyShow> findByPage(Page page) {
+		return healthyshowdao.findByPage(page);
 	}
 	
 

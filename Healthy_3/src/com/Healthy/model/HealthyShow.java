@@ -1,6 +1,6 @@
 package com.Healthy.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,13 +13,13 @@ public class HealthyShow implements java.io.Serializable {
 	// Fields
 
 	private String showId;
-	private StadiumMain stadiumMain;
-	private String userId;
-	private String showTitle;
+	private String showUser;
 	private String showTag;
 	private String showContent;
-	private Date showTime;
+	private Timestamp showTime;
 	private String showLocation;
+	private String showImage;
+	private Integer showAgree;
 	private Set showReplies = new HashSet(0);
 
 	// Constructors
@@ -29,30 +29,26 @@ public class HealthyShow implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public HealthyShow(String showId, StadiumMain stadiumMain, String userId,
-			String showTag, String showContent, Date showTime,
-			String showLocation) {
+	public HealthyShow(String showId, String showUser, String showContent,
+			Timestamp showTime) {
 		this.showId = showId;
-		this.stadiumMain = stadiumMain;
-		this.userId = userId;
-		this.showTag = showTag;
+		this.showUser = showUser;
 		this.showContent = showContent;
 		this.showTime = showTime;
-		this.showLocation = showLocation;
 	}
 
 	/** full constructor */
-	public HealthyShow(String showId, StadiumMain stadiumMain, String userId,
-			String showTitle, String showTag, String showContent,
-			Date showTime, String showLocation, Set showReplies) {
+	public HealthyShow(String showId, String showUser, String showTag,
+			String showContent, Timestamp showTime, String showLocation,
+			String showImage, Integer showAgree, Set showReplies) {
 		this.showId = showId;
-		this.stadiumMain = stadiumMain;
-		this.userId = userId;
-		this.showTitle = showTitle;
+		this.showUser = showUser;
 		this.showTag = showTag;
 		this.showContent = showContent;
 		this.showTime = showTime;
 		this.showLocation = showLocation;
+		this.showImage = showImage;
+		this.showAgree = showAgree;
 		this.showReplies = showReplies;
 	}
 
@@ -66,28 +62,12 @@ public class HealthyShow implements java.io.Serializable {
 		this.showId = showId;
 	}
 
-	public StadiumMain getStadiumMain() {
-		return this.stadiumMain;
+	public String getShowUser() {
+		return this.showUser;
 	}
 
-	public void setStadiumMain(StadiumMain stadiumMain) {
-		this.stadiumMain = stadiumMain;
-	}
-
-	public String getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getShowTitle() {
-		return this.showTitle;
-	}
-
-	public void setShowTitle(String showTitle) {
-		this.showTitle = showTitle;
+	public void setShowUser(String showUser) {
+		this.showUser = showUser;
 	}
 
 	public String getShowTag() {
@@ -106,11 +86,11 @@ public class HealthyShow implements java.io.Serializable {
 		this.showContent = showContent;
 	}
 
-	public Date getShowTime() {
+	public Timestamp getShowTime() {
 		return this.showTime;
 	}
 
-	public void setShowTime(Date showTime) {
+	public void setShowTime(Timestamp showTime) {
 		this.showTime = showTime;
 	}
 
@@ -120,6 +100,22 @@ public class HealthyShow implements java.io.Serializable {
 
 	public void setShowLocation(String showLocation) {
 		this.showLocation = showLocation;
+	}
+
+	public String getShowImage() {
+		return this.showImage;
+	}
+
+	public void setShowImage(String showImage) {
+		this.showImage = showImage;
+	}
+
+	public Integer getShowAgree() {
+		return this.showAgree;
+	}
+
+	public void setShowAgree(Integer showAgree) {
+		this.showAgree = showAgree;
 	}
 
 	public Set getShowReplies() {

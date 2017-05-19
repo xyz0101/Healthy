@@ -11,4 +11,6 @@ import com.Healthy.model.UserMain;
 import com.Healthy.model.UserPic;
 public interface UserPicService {
 	public void add(UserPic userpic);	
+	public void updatePic(UserPic userpic);
+	public UserPic findById(String userid);
 }

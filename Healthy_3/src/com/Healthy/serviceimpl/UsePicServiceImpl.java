@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,18 @@ public class UsePicServiceImpl implements UserPicService{
 	public void add(UserPic userpic) {
 		userpicdao.add(userpic);
 		
+	}
+
+	@Override
+	public void updatePic(UserPic userpic) {
+		userpicdao.updatePic(userpic);
+		
+	}
+
+	@Override
+	public UserPic findById(String userid) {
+		// TODO Auto-generated method stub
+		return (UserPic) userpicdao.findByUserId(userid).get(0);
 	}
 	
 }

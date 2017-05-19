@@ -11,6 +11,7 @@ public class Healthyer implements java.io.Serializable {
 	private Integer adminId;
 	private String adminName;
 	private String adminPassword;
+	private String adminStatus;
 
 	// Constructors
 
@@ -19,9 +20,10 @@ public class Healthyer implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Healthyer(String adminName, String adminPassword) {
+	public Healthyer(String adminName, String adminPassword, String adminStatus) {
 		this.adminName = adminName;
 		this.adminPassword = adminPassword;
+		this.adminStatus = adminStatus;
 	}
 
 	// Property accessors
@@ -48,6 +50,14 @@ public class Healthyer implements java.io.Serializable {
 
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
+	}
+
+	public String getAdminStatus() {
+		return this.adminStatus;
+	}
+
+	public void setAdminStatus(String adminStatus) {
+		this.adminStatus = adminStatus;
 	}
 
 }

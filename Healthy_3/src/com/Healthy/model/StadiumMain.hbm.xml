@@ -20,10 +20,10 @@
             <column name="stadium_name" length="50" not-null="true" />
         </property>
         <property name="stadiumType" type="java.lang.String">
-            <column name="stadium_type" length="20" not-null="true" />
+            <column name="stadium_type" length="20" />
         </property>
         <property name="stadiumPrice" type="java.lang.String">
-            <column name="stadium_price" length="20" not-null="true" />
+            <column name="stadium_price" length="20" />
         </property>
         <property name="stadiumLocation" type="java.lang.String">
             <column name="stadium_location" length="500" not-null="true" />
@@ -41,7 +41,7 @@
             <column name="stadium_photo" length="500" not-null="true" />
         </property>
         <property name="stadiumStatus" type="java.lang.Short">
-            <column name="stadium_status" not-null="true" />
+            <column name="stadium_status" />
         </property>
         <set name="stadiumPlaces" inverse="true">
             <key>
@@ -49,17 +49,17 @@
             </key>
             <one-to-many class="com.Healthy.model.StadiumPlace" />
         </set>
-        <set name="healthyShows" inverse="true">
-            <key>
-                <column name="stadium_id" length="50" not-null="true" />
-            </key>
-            <one-to-many class="com.Healthy.model.HealthyShow" />
-        </set>
         <set name="healthyInvites" inverse="true">
             <key>
                 <column name="stadium_id" length="50" not-null="true" />
             </key>
             <one-to-many class="com.Healthy.model.HealthyInvite" />
+        </set>
+        <set name="stadiumComments" inverse="true">
+            <key>
+                <column name="stadium_id" length="50" not-null="true" />
+            </key>
+            <one-to-many class="com.Healthy.model.StadiumComment" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,15 +9,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>场馆详情</title>
     
 	<link href="css1/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css1/style.css" rel='stylesheet' type='text/css' />
+<link href="css1/comment.css" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="js1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css1/datedropper.css">
@@ -25,6 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .demo{margin:80px auto 40px auto;width:320px}
 .input{padding:6px;border:1px solid #d3d3d3}
 </style>
+<link rel="stylesheet" type="text/css" href="css1/xcConfirm.css"/>
+
+		
+		<script src="js1/xcConfirm.js" type="text/javascript" charset="utf-8"></script>
 <script src="js1/datedropper.min.js"></script>
 <script src="js1/timedropper.min.js"></script>
 
@@ -58,20 +63,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(".dropdown img.flag").toggleClass("flagvisibility");
             });
         });
-
+	
        $(function(){
        
         $("#pricerange").html(${requestScope.min }+"-"+${requestScope.max});
       // 	avr();
        } );
        var pr=0;
+       var sel=1;
+       //setInterval("go()", 100)
+      //  setInterval("choose(t)", 100)
+      
+      // 
        function choose(t){
-       var spl=t.getAttribute("name");
-       alert(spl)
+       
+      // alert(spl)
+     // alert(t)
        		var i=t.getElementsByTagName("a")[0].getAttribute("id");
-       		var price=t.getElementsByTagName("a")[0].getAttribute("name");
+       		var price=parseInt(t.getElementsByTagName("a")[0].getAttribute("name"));
        		//alert(i+"---"+price)
+       		
        		if(i==0){
+       		 
        		pr=pr+parseInt(price);
        		t.getElementsByTagName("a")[0].setAttribute("id","1");
        		t.getElementsByTagName("div")[0].setAttribute("class","comfirm");
@@ -84,6 +97,141 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        		 $("#pricenow").html(pr);
        		}       	
        }
+       
+        function go(){
+       $("#pricenow").html(	pr*parseInt($("#selval").val()));
+      // alert(sel)
+       }
+       function time(t){
+       //alert(parseInt(t))
+       if(parseInt(t)>8||parseInt(t)<0||t==null ||!(/^(\+|-)?\d+$/.test( parseInt(t) ))){
+       $("#time").css("display","");
+       return false;
+       }else{
+       $("#time").css("display","none");
+        return true;
+       }
+      
+       }
+       
+      
+       function submit(){
+       //var place[];
+       //stadiumplace=t.getAttribute("name");
+       var date=$("#pickdate").val();
+	   var time=$("#picktime").val();
+	     		
+					var interval=parseInt($("#interval").val());
+					var number=$("#selval").val();
+					var spl= new Array();
+					var userid=$("#userinfo").attr("name");
+					var price=$("#pricenow").html()
+       			//var stadiumplace={"userName":"test","address":"gz"};			
+       				for(i=0;i<$(".comfirm").length;i++){
+       				var stp=$(".comfirm")[i].getAttribute("name");
+       				spl.push(stp);
+       				}
+       				
+       				//alert(price)
+       				stadiumplace=JSON.stringify(spl)
+					if(date==""||time==""||interval==""||number==""||spl.length==0)
+					return false;
+					$.ajax({
+					type:"post",
+					//contentType:"application/json",
+					url:"toOrderSubmit",
+					traditional:true,
+					data:"stadiumplace="+stadiumplace+"&date="+date+"&time="+time+"&interval="+interval+"&number="+number+"&price="+price,
+					//dataType: "json", 
+					success:function(msg){
+					if(msg=="success"){
+						var option = {
+						title: "预约提醒",
+						btn: parseInt("0011",2),
+						onOk: function(){
+							// window.location.href ="toOrderDetail"
+						},
+						onCancel:function(){
+						},
+						onClose:function(){
+						}
+					}
+					
+					window.wxc.xcConfirm("预约成功！是否进入我的订单？", "custom", option);
+					
+					}
+						else if(msg="error")	{
+									var option = {
+						title: "登录提醒",
+						btn: parseInt("0011",2),
+						onOk: function(){
+							 window.location.href ="tologin";	
+						},
+						onCancel:function(){
+						},
+						onClose:function(){
+						}
+					}
+					
+					window.wxc.xcConfirm("您还没有登录，是否现在登录？", "custom", option);
+						}		
+					} ,
+					error:function(){
+			
+					}
+					});
+					}
+	 function toReply(id){
+       for(var i=0;i<$(".reply_block").length;i++){
+       if($(".reply_block")[i].id==id)
+      $(".reply_block")[i].className="reply_block_display";
+       }
+       for(var i=0;i<$(".reply_btn").length;i++){
+       if($(".reply_btn")[i].id==id)
+      $(".reply_btn")[i].className="reply_btn_display";
+       }
+        }
+        function upReply(id){
+       // var content=""; var reg = /^\s*$/g;
+         for(var i=0;i<$(".R_input").length;i++){
+       if($(".R_input")[i].name==id)
+     content= $(".R_input")[i].value+"";
+       } 
+     // alert(id)
+       /*if(!reg.test(content)){
+        alert("输入不能为空");
+        return false;
+       }*/
+      
+         $.ajax({
+        url:"replyComment",
+        type:"post",
+        data:"content="+content+"&commentId="+id,
+        success: function(msg){
+        if(msg=="success"){
+         alert("回复成功");
+             //location.href="ToStadium_Detail1";
+             location.reload(true)
+        }
+        else if(msg="error")	{
+									var option = {
+						title: "登录提醒",
+						btn: parseInt("0011",2),
+						onOk: function(){
+							 window.location.href ="tologin";	
+						},
+						onCancel:function(){
+						},
+						onClose:function(){
+						}
+					}
+					
+					window.wxc.xcConfirm("您还没有登录，是否现在登录？", "custom", option);
+						}	
+        }
+        	});
+        }
+					
        </script>
      <!----details-product-slider--->
 				<!-- Include the Etalage files -->
@@ -108,6 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							});
 
 					});
+					
 				</script>
 				<!----//details-product-slider--->	
 </head>
@@ -125,11 +274,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						    <ul class="nav" id="nav">
 						    	<li><a href="tosport">首页</a></li>
 						    	<li><a href="Tosportproject">运动项目</a></li>
-						    	<li><a href="shop.html">运动日历</a></li>
-						    	<li><a href="experiance.html">运动社区</a></li>
+						    	<li><a href="toHealthyKnow">健身常识</a></li>
+						    	<li><a href="toAllSpace">运动社区</a></li>
 						    	
 								<li><a href="contact.html">联系我们</a></li>									
-								<div class="clear"></div>						
 								<div class="clear"></div>
 							</ul>
 							<script type="text/javascript" src="js1/responsive-nav.js"></script>
@@ -156,16 +304,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				    <ul class="icon1 sub-icon1 profile_img">
 					 <li><a class="active-icon c1" href="#"> </a>
 						<ul class="sub-icon1 list">
-						  <div class="product_control_buttons">
-						  	<a href="#"><img src="img/edit.png" alt=""/></a>
+						 
+						 <c:choose>
+  					<c:when test="${sessionScope.user1==null}">
+  					
+  					  <div class="product_control_buttons">
+						   <!--  	<a href="#"><img src="img/edit.png" alt=""/></a>-->
 						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
 						  </div>
 						   <div class="clear"></div>
-						 <c:choose>
-  					<c:when test="${sessionScope.user1==null}">
   					 <li class="list_img"><img src="img/1.jpg" width="50px" height="50px"  alt=""/></li>
-						  
-						  <li class="list_desc"><h4 ><a id="userinfo" href="#">游客你好！</a></h4><span class="actual">
+						 
+						  <li class="list_desc"><h4 ><a id="userinfo"name="" href="javascript:;">游客你好！</a></h4><span class="actual">
                           </span></li>
 						  <div class="login_buttons">
 							 <div class="check_button"><a href="ToRegister">注册</a></div>
@@ -174,10 +324,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  </div>
 						  <div class="clear"></div>
 						  </c:when>
-						  <c:otherwise>
+						 <c:otherwise>
+						  <div class="product_control_buttons">
+						  	<a href="toEditDetail"><img src="img/edit.png" alt=""/></a>
+						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
+						  </div>
+						   <div class="clear"></div>
+						  
 						   <li class="list_img"><img src="${sessionScope.user1.getUserPic().getUserPic()}" width="50px" height="50px"  alt=""/></li>
 						  
-						   <li class="list_desc"><h4 ><a id="userinfo" href="#">${sessionScope.user1.userNickname}</a></h4><span class="actual">
+						   <li class="list_desc"><h4 ><a id="userinfo" name="${sessionScope.user1.userId}" href="toIndividual">${sessionScope.user1.userNickname}</a></h4><span class="actual">
                           15级</span></li>
 						  <div class="login_buttons">
 							<!--  <div class="check_button"><a href="Register">注册</a></div> -->
@@ -204,58 +360,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="col-md-9 single_left">
 				   <div class="single_image">
 					     <ul id="etalage">
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image" src="img/3.jpg" />
-									<img class="etalage_source_image" src="img/3.jpg" />
+							<c:forEach items="${requestScope.splist }" var="spl" begin="0" end="6" varStatus="status"> 
+								<li>
+								<a href="javascript;">
+									<img class="etalage_thumb_image" src="${spl.placePhoto }" />
+									<img class="etalage_source_image" src="${spl.placePhoto }" />
 								</a>
 							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/4.jpg" />
-								<img class="etalage_source_image" src="img/4.jpg" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/5.jpg" />
-								<img class="etalage_source_image" src="img/5.jpg" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/6.jpg" />
-								<img class="etalage_source_image" src="img/6.jpg" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/7.jpg" />
-								<img class="etalage_source_image" src="img/7.jpg" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/8.jpg" />
-								<img class="etalage_source_image" src="img/8.jpg" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="img/9.jpg" />
-								<img class="etalage_source_image" src="img/9.jpg" />
-							</li>
+								</c:forEach>
+							
 						</ul>
 					    </div>
 				        <!-- end product_slider -->
 				        <div class="single_right">
 				        	<h3>场馆详细介绍 </h3>
 				        	<p class="m_10">${requestScope.stadium.stadiumIntroduction }</p>
-				        	<p>${requestScope.stadium.stadiumLocation }</p>
-				        	<ul class="options">
-								<span>选择人数:</span><br>
-								<select style="width:100px">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-								</select>
-							</ul>
+				        	<p>${requestScope.stadium.stadiumLocation }</p></br>
+				        	
 				        	<ul class="product-colors">
+				        	
 								<h3>选择场地</h3>
 								<c:forEach items="${requestScope.splist }" var="spl" begin="0" end="6" varStatus="status"> 
-								<li name="${spl }" onclick="choose(this)"><div class="uncomfirm"></div><a class="color1" id="0" name="${spl.placePrice }">
+								<li  onclick="choose(this)" ><div class="uncomfirm" name="${spl.placeId }" ></div><a class="color1" id="0" name="${spl.placePrice }">
 								
 								<img src="${spl.placePhoto }" width="32px" height="32px">
 								</a>
@@ -263,11 +389,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 								<div class="clear"> </div>
 							</ul>
-							
-								<p>请选择日期：<input type="text" class="input" id="pickdate" /></p><br/>
-								<p>请开始时间：<input type="text" class="input" id="picktime" /></p><br/>
-								<p>请结束时间：<input type="text" class="input" id="pickovertime" /></p><br/>
-								
+							<p>请选择训练日期：<input type="text" class="input" id="pickdate"  /></p><br/>
+								<p>请选择开始时间：<input type="text" class="input" id="picktime" /></p><br/>
 								<script>
 									$("#pickdate").dateDropper({
 										animate: false,
@@ -279,14 +402,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										format: 'HH:mm',
 									});
 									$("#pickovertime").timeDropper({
+										
 										meridians: false,
 										format: 'HH:mm',
 									});
 									</script>
+								<p>请输入训练时长：<input type="text" class="input" onchange="time(this.value)" onkeyup="time(this.value)" id="interval" />
+								<span id="time" style="color:red; display:none;">请输入1-8之间的整数</span></p><br/>
+								
+							<ul class="options">
+								<span>选择人数:</span><br>
+								<select id="selval" style="width:100px">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+								</select>
+							</ul>
+								
+								
 							<div class="btn_form">
-							   <form action="" method="post" onsubmit="check()">
-								 <input type="submit" value="立即预约" title="">
-							  </form>
+						
+								 <input type="button" value="加入订单"onclick="submit()" >
+						
 							</div>
 							
 				        </div>
@@ -304,14 +444,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					            </button>
 					            <button type="button" class="btn1 btn1-default1 btn1-facebook" onclick="">
 					              <i class="icon-facebook"></i> 圈子
-					            
+					            </button>
 					        </div>
 				   </div>
 			   </div>
 			   <div class="col-md-3" width="300px">
 				  <div class="box-info-price"id="haha">
 				
-				  	<p class="price">价格:</p>
+				  	<p class="price">单价:</p>
 				 	<p class="price2" id="pricerange" >0-0</p>
 					<p class="price">已选价格:</p>
 				 	<p class="price2" id="pricenow">0</p>
@@ -319,125 +459,173 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>
 			</div>		
 			<div class="desc">
-			   	<h4>Description</h4>
-			   	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores</p>
+			   	<h4>场馆评论<span style="font-size:18px;">(${requestScope.commentlist.size() }条)</span></h4>
+			   	 
+        
+        <c:forEach begin="0" end="6" items="${requestScope.commentlist }" var="comm" varStatus="status">
+           <div class="comment">
+           <c:set var="commpic" value="${comm.commentUser }_pic"/>
+           <img src="${requestScope[commpic] }" width="40px" height="40px" />
+        <div class="comment_content">
+            <div class="content">
+                <a style="color:orange">${comm.commentUser }:&nbsp;&nbsp;</a>${comm.commentContent }
+            </div>
+            <div class="time">
+              <c:set var="time" value="${comm.commentTime }"/>
+              <c:choose>
+                        	<c:when test="${sessionScope.user1.userNickname eq comm.commentUser }">
+                        	<div class="comment_time"> ${fn:substring(time, 0, 19)} <a onclick="deleteComment('${comm.commentId}')" style="margin-left:48%;font-size:16px;">删除</a></div>
+                        	</c:when>
+                        	<c:otherwise>
+                         <div class="comment_time" > ${fn:substring(time, 0, 19)}</div>
+                        	</c:otherwise>
+                        	</c:choose>
+                <div class="reply"> <a onclick="toReply('${comm.commentId}')">回复</a></div>
+            </div>
+            <div class="reply_block" id="${comm.commentId}">
+            <textarea class="R_input" name="${comm.commentId}"></textarea>
+           </div>
+           <div class="reply_btn" id="${comm.commentId}"> 
+           <input type="button" onclick="upReply('${comm.commentId}')" value="回复">
+           </div>
+            <div class="reply_content">
+                <ul id="${comm.commentId }reply">
+
+						<c:set var="temp" value="${comm.commentId }"/>
+                <c:forEach begin="0" end="2" items="${requestScope[temp]}" var="reply" varStatus="status">
+                    <li>
+                        <div class="c_reply">
+                            <a style="color:orange">${reply.replyUser }:&nbsp;&nbsp;</a>${reply.replyContent }
+                        </div>
+                         <c:set var="replytime" value="${reply.replyTime }"/>
+                        <div class="time">
+                        	<c:choose>
+                        	<c:when test="${sessionScope.user1.userNickname eq reply.replyUser }">
+                            <div class="comment_time" > ${fn:substring(replytime, 0, 19)}<a onclick="deleteReply('${reply.replyId}')" style="font-size:16px;margin-left:70%;">删除</a></div>
+                        	</c:when>
+                        	<c:otherwise>
+                         <div class="comment_time" > ${fn:substring(replytime, 0, 19)}</div>
+                        	
+                        	</c:otherwise>
+                        	</c:choose>
+                        </div>
+                    </li>
+                    </c:forEach>
+      
+                </ul>
+									<div  class="more"> <a onclick="getNext('${comm.commentId }')" >查看更多</a></div>
+				
+            </div>
+            
+        </div>
+    </div></c:forEach>
 			</div>
+			
+			<script>
+        function deleteComment(t) {
+            var msg = "您确定要删除该评论吗？\n\n请确认！";
+            if (confirm(msg) == true) {
+                $.ajax({
+                    type: "post",
+                    url: "deleteMyComment",
+                    data: "id=" + t,
+                    success: function (msg) {
+                        if (msg == "success") {
+                            alert("删除成功")
+                            location.reload(true)
+                        } else {
+                            alert("删除失败")
+                        }
+                        
+                    }
+                })
+            } else {
+                return false;
+            }
+        }
+        function deleteReply(t) {
+            var msg = "您确定要删除该回复吗？\n\n请确认！";
+            if (confirm(msg) == true) {
+                $.ajax({
+                    type: "post",
+                    url: "deleteMyReply",
+                    data: "id=" + t,
+                    success: function (msg) {
+                        if (msg == "success") {
+                            alert("删除成功")
+                            location.reload(true)
+                        } else {
+                            alert("删除失败")
+                        }
+
+                    }
+                })
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+			
+			
+			<script type="text/javascript">
+			
+			var i=1;
+				var id1="";
+			function getNext(t){
+			var id=t;
+		
+			if(id1!=id){
+			i=1;
+			//alert(1212)
+			}
+			
+			id1=id;
+			
+			i++;
+			alert(i)
+			$.ajax({
+			type:"post",
+			url:"getCommentReply",
+			data:"commentId="+t+"&pageNext="+i,
+			success:function(msgdata){
+				//alert(msgdata)
+				//alert(document.getElementById(t+"reply").innerHTML)
+				if(msgdata=="")
+				alert("没有更多了！")
+				 document.getElementById(t+"reply").innerHTML=document.getElementById(t+"reply").innerHTML+msgdata;
+				//$("#next_reply").append(msgdata)
+			}
+			
+			})
+			}
+			
+			</script>
+			
 			<div class="row">
-				<h4 class="m_11">相关热门场地推荐</h4>
+				<h4 class="m_11">相关热门场馆推荐</h4>
+				<c:forEach items="${requestScope.relative }" begin="0" end="2" var="rela" varStatus="status">
 				<div class="col-md-4 product1">
-					<img src="img/s1.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
+					<img src="${rela.stadiumPhoto }" class="img-responsive" alt=""/> 
+					<div class="shop_desc"><a href="ToStadium_Detail1?id=${rela.stadiumId }">
+						</a><h3><a href="single.html"></a><a href="ToStadium_Detail1?id=${rela.stadiumId }">${rela.stadiumName }</a></h3>
+						<p>${rela.stadiumIntroduction }</p>
+						
+						<span class="actual">${rela.stadiumPrice }</span><br>
 						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
+							<li class="cart"><a href="ToStadium_Detail1?id=${rela.stadiumId }">前往场馆</a></li>
+						
 							<div class="clear"> </div>
 					    </ul>
 				    </div>
 				</div>
-				<div class="col-md-4 product1">
-					<img src="img/s2.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</div>
-				<div class="col-md-4">
-					<img src="img/s3.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</div>
+				</c:forEach>
 			</div>	
 	     </div>
 	   </div>
 	  </div>
 	  <div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Products</h4>
-							<li><a href="#">Mens</a></li>
-							<li><a href="#">Womens</a></li>
-							<li><a href="#">Youth</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Newsletter</h4>
-							<div class="footer_search">
-				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
-				    		   </form>
-					        </div>
-							<ul class="social">	
-							  <li class="facebook"><a href="#"><span> </span></a></li>
-							  <li class="twitter"><a href="#"><span> </span></a></li>
-							  <li class="instagram"><a href="#"><span> </span></a></li>	
-							  <li class="pinterest"><a href="#"><span> </span></a></li>	
-							  <li class="youtube"><a href="#"><span> </span></a></li>										  				
-						    </ul>
-		   				</ul>
-					</div>
-				</div>
-				<div class="row footer_bottom">
-				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-		            </div>
-					  <dl id="sample" class="dropdown">
-				        <dt><a href="#"><span>Change Region</span></a></dt>
-				        <dd>
-				            <ul>
-				                <li><a href="#">Australia<img class="flag" src="img/as.png" alt="" /><span class="value">AS</span></a></li>
-				                <li><a href="#">Sri Lanka<img class="flag" src="img/srl.png" alt="" /><span class="value">SL</span></a></li>
-				                <li><a href="#">Newziland<img class="flag" src="img/nz.png" alt="" /><span class="value">NZ</span></a></li>
-				                <li><a href="#">Pakistan<img class="flag" src="img/pk.png" alt="" /><span class="value">Pk</span></a></li>
-				                <li><a href="#">United Kingdom<img class="flag" src="img/uk.png" alt="" /><span class="value">UK</span></a></li>
-				                <li><a href="#">United States<img class="flag" src="img/us.png" alt="" /><span class="value">US</span></a></li>
-				            </ul>
-				         </dd>
-	   				  </dl>
-   				</div>
-			</div>
+		
 		</div>
 </body>	
 </html>

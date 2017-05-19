@@ -11,16 +11,13 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="stadiumPlace" class="com.Healthy.model.StadiumPlace" fetch="select">
-            <column name="place_id" length="50" not-null="false" />
+            <column name="place_id" length="50" />
         </many-to-one>
         <property name="userId" type="java.lang.String">
             <column name="user_id" length="50" not-null="true" />
         </property>
         <property name="stadiumId" type="java.lang.String">
             <column name="stadium_id" length="50" not-null="true" />
-        </property>
-         <property name="orderplace" type="java.lang.String">
-            <column name="order_place" length="500" not-null="true" />
         </property>
         <property name="orderTime" type="java.sql.Timestamp">
             <column name="order_time" length="19" not-null="true" />
@@ -31,9 +28,30 @@
         <property name="orderEndTime" type="java.sql.Timestamp">
             <column name="order_end_time" length="19" not-null="true" />
         </property>
-        <property name="orderStatus" type="java.lang.Boolean">
-            <column name="order_status" not-null="true" />
+        <property name="orderStatus" type="java.lang.String">
+            <column name="order_status" length="10" not-null="true" />
         </property>
+        <property name="orderPlace" type="java.lang.String">
+            <column name="order_place" length="500" not-null="true" />
+        </property>
+        <property name="orderPrice" type="java.lang.Integer">
+            <column name="order_price" not-null="true" />
+        </property>
+        <property name="orderNumber" type="java.lang.Integer">
+            <column name="order_number" not-null="true" />
+        </property>
+        <property name="orderPhoto" type="java.lang.String">
+            <column name="order_photo" length="100" />
+        </property>
+        <property name="orderComment" type="java.lang.String">
+            <column name="order_comment" length="10" not-null="true" />
+        </property>
+        <set name="stadiumPlaces" inverse="true">
+            <key>
+                <column name="order_id" length="50" />
+            </key>
+            <one-to-many class="com.Healthy.model.StadiumPlace" />
+        </set>
         <set name="orderContents" inverse="true">
             <key>
                 <column name="order_id" length="50" not-null="true" />

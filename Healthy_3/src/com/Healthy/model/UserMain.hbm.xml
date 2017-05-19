@@ -11,16 +11,16 @@
             <generator class="assigned" />
         </id>
         <property name="userNickname" type="java.lang.String">
-            <column name="user_nickname" length="20" />
+            <column name="user_nickname" length="20" not-null="true" />
         </property>
         <property name="userPassword" type="java.lang.String">
             <column name="user_password" length="20" not-null="true" />
         </property>
-        <property name="userSex" type="java.lang.Boolean">
-            <column name="user_sex" />
+        <property name="userSex" type="java.lang.String">
+            <column name="user_sex" length="2" />
         </property>
-        <property name="userStatus" type="java.lang.Boolean">
-            <column name="user_status" />
+        <property name="userStatus" type="java.lang.String">
+            <column name="user_status" length="8" not-null="true" />
         </property>
         <set name="stadiumMains" inverse="true">
             <key>

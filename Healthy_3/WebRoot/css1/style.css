@@ -553,6 +553,7 @@ li.list_desc h4 a:hover{
 	background-position: center;
 	background-size: 100% 100%;
 	height:100%;
+	margin-top:5%;
 	padding:15% 0;
 }
 .content_bottom-text h3{
@@ -1037,6 +1038,12 @@ li.youtube a span {
 	top: 0px;
 }
 .shop_box{
+	width: 360;
+    height: 200;
+	position:relative;
+}
+.shop_box1{
+	
 	position:relative;
 }
 .shop_desc{
@@ -1374,7 +1381,7 @@ p.m_10{
 .btn_form{
 	margin-bottom:5%;
 }
-.btn_form form input[type="submit"] {
+.btn_form input[type="button"] {
 	font-family: 'Open Sans', sans-serif;
 	cursor: pointer;
 	border: none;

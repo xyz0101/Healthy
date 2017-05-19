@@ -7,6 +7,7 @@ import com.Healthy.model.UserMain;
 public interface UserMainDAO {
 	public void add(UserMain user);
 	public List findbyname(String name);
+	public void update(UserMain user);
 	public List findbyId(String id);
 	public List findAll();
 	public void delete(UserMain user);

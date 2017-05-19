@@ -13,7 +13,7 @@
 		<!-- 属性文件路径 -->
 		 <context:property-placeholder location="classpath*:/config.properties" />
 		 <!-- 配置扫描注解包 -->
-		  <context:component-scan base-package="com.Healthy.serviceimpl"></context:component-scan>
+<context:component-scan base-package="com.Healthy.serviceimpl"></context:component-scan>
   <context:component-scan base-package="com.Healthy.dao.impl"></context:component-scan>
    <context:component-scan base-package="com.Healthy.controller"></context:component-scan>
    <context:component-scan base-package="com.Healthy.interpoter"></context:component-scan>
@@ -108,4 +108,4 @@
    advice-ref="txAdvice" />
    
  </aop:config>
-		</beans>
+  </beans>

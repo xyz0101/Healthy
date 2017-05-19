@@ -24,8 +24,8 @@ public class StadiumMain implements java.io.Serializable {
 	private String stadiumPhoto;
 	private Short stadiumStatus;
 	private Set stadiumPlaces = new HashSet(0);
-	private Set healthyShows = new HashSet(0);
 	private Set healthyInvites = new HashSet(0);
+	private Set stadiumComments = new HashSet(0);
 
 	// Constructors
 
@@ -35,19 +35,15 @@ public class StadiumMain implements java.io.Serializable {
 
 	/** minimal constructor */
 	public StadiumMain(String stadiumId, UserMain userMain,
-			SportProject sportProject, String stadiumName, String stadiumType,
-			String stadiumPrice, String stadiumLocation, String stadiumTel,
-			String stadiumPhoto, Short stadiumStatus) {
+			SportProject sportProject, String stadiumName,
+			String stadiumLocation, String stadiumTel, String stadiumPhoto) {
 		this.stadiumId = stadiumId;
 		this.userMain = userMain;
 		this.sportProject = sportProject;
 		this.stadiumName = stadiumName;
-		this.stadiumType = stadiumType;
-		this.stadiumPrice = stadiumPrice;
 		this.stadiumLocation = stadiumLocation;
 		this.stadiumTel = stadiumTel;
 		this.stadiumPhoto = stadiumPhoto;
-		this.stadiumStatus = stadiumStatus;
 	}
 
 	/** full constructor */
@@ -56,7 +52,7 @@ public class StadiumMain implements java.io.Serializable {
 			String stadiumPrice, String stadiumLocation,
 			String stadiumIntroduction, String stadiumTel,
 			Integer stadiumLevel, String stadiumPhoto, Short stadiumStatus,
-			Set stadiumPlaces, Set healthyShows, Set healthyInvites) {
+			Set stadiumPlaces, Set healthyInvites, Set stadiumComments) {
 		this.stadiumId = stadiumId;
 		this.userMain = userMain;
 		this.sportProject = sportProject;
@@ -70,8 +66,8 @@ public class StadiumMain implements java.io.Serializable {
 		this.stadiumPhoto = stadiumPhoto;
 		this.stadiumStatus = stadiumStatus;
 		this.stadiumPlaces = stadiumPlaces;
-		this.healthyShows = healthyShows;
 		this.healthyInvites = healthyInvites;
+		this.stadiumComments = stadiumComments;
 	}
 
 	// Property accessors
@@ -180,20 +176,20 @@ public class StadiumMain implements java.io.Serializable {
 		this.stadiumPlaces = stadiumPlaces;
 	}
 
-	public Set getHealthyShows() {
-		return this.healthyShows;
-	}
-
-	public void setHealthyShows(Set healthyShows) {
-		this.healthyShows = healthyShows;
-	}
-
 	public Set getHealthyInvites() {
 		return this.healthyInvites;
 	}
 
 	public void setHealthyInvites(Set healthyInvites) {
 		this.healthyInvites = healthyInvites;
+	}
+
+	public Set getStadiumComments() {
+		return this.stadiumComments;
+	}
+
+	public void setStadiumComments(Set stadiumComments) {
+		this.stadiumComments = stadiumComments;
 	}
 
 }

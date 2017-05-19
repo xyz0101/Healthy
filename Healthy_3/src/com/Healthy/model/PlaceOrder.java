@@ -16,11 +16,16 @@ public class PlaceOrder implements java.io.Serializable {
 	private StadiumPlace stadiumPlace;
 	private String userId;
 	private String stadiumId;
-	private String orderPlace;
 	private Timestamp orderTime;
 	private Timestamp orderStartTime;
 	private Timestamp orderEndTime;
-	private Boolean orderStatus;
+	private String orderStatus;
+	private String orderPlace;
+	private Integer orderPrice;
+	private Integer orderNumber;
+	private String orderPhoto;
+	private String orderComment;
+	private Set stadiumPlaces = new HashSet(0);
 	private Set orderContents = new HashSet(0);
 
 	// Constructors
@@ -30,33 +35,43 @@ public class PlaceOrder implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PlaceOrder(String orderId, StadiumPlace stadiumPlace, String userId,
-			String stadiumId, Timestamp orderTime, Timestamp orderStartTime,
-			Timestamp orderEndTime, Boolean orderStatus,String orderPlace) {
+	public PlaceOrder(String orderId, String userId, String stadiumId,
+			Timestamp orderTime, Timestamp orderStartTime,
+			Timestamp orderEndTime, String orderStatus, String orderPlace,
+			Integer orderPrice, Integer orderNumber, String orderComment) {
 		this.orderId = orderId;
-		this.orderPlace = orderPlace;
-		this.stadiumPlace = stadiumPlace;
 		this.userId = userId;
 		this.stadiumId = stadiumId;
 		this.orderTime = orderTime;
 		this.orderStartTime = orderStartTime;
 		this.orderEndTime = orderEndTime;
 		this.orderStatus = orderStatus;
+		this.orderPlace = orderPlace;
+		this.orderPrice = orderPrice;
+		this.orderNumber = orderNumber;
+		this.orderComment = orderComment;
 	}
 
 	/** full constructor */
 	public PlaceOrder(String orderId, StadiumPlace stadiumPlace, String userId,
 			String stadiumId, Timestamp orderTime, Timestamp orderStartTime,
-			Timestamp orderEndTime, Boolean orderStatus, Set orderContents ,String orderPlace) {
+			Timestamp orderEndTime, String orderStatus, String orderPlace,
+			Integer orderPrice, Integer orderNumber, String orderPhoto,
+			String orderComment, Set stadiumPlaces, Set orderContents) {
 		this.orderId = orderId;
 		this.stadiumPlace = stadiumPlace;
-		this.orderPlace = orderPlace;
 		this.userId = userId;
 		this.stadiumId = stadiumId;
 		this.orderTime = orderTime;
 		this.orderStartTime = orderStartTime;
 		this.orderEndTime = orderEndTime;
 		this.orderStatus = orderStatus;
+		this.orderPlace = orderPlace;
+		this.orderPrice = orderPrice;
+		this.orderNumber = orderNumber;
+		this.orderPhoto = orderPhoto;
+		this.orderComment = orderComment;
+		this.stadiumPlaces = stadiumPlaces;
 		this.orderContents = orderContents;
 	}
 
@@ -118,12 +133,60 @@ public class PlaceOrder implements java.io.Serializable {
 		this.orderEndTime = orderEndTime;
 	}
 
-	public Boolean getOrderStatus() {
+	public String getOrderStatus() {
 		return this.orderStatus;
 	}
 
-	public void setOrderStatus(Boolean orderStatus) {
+	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	public String getOrderPlace() {
+		return this.orderPlace;
+	}
+
+	public void setOrderPlace(String orderPlace) {
+		this.orderPlace = orderPlace;
+	}
+
+	public Integer getOrderPrice() {
+		return this.orderPrice;
+	}
+
+	public void setOrderPrice(Integer orderPrice) {
+		this.orderPrice = orderPrice;
+	}
+
+	public Integer getOrderNumber() {
+		return this.orderNumber;
+	}
+
+	public void setOrderNumber(Integer orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+
+	public String getOrderPhoto() {
+		return this.orderPhoto;
+	}
+
+	public void setOrderPhoto(String orderPhoto) {
+		this.orderPhoto = orderPhoto;
+	}
+
+	public String getOrderComment() {
+		return this.orderComment;
+	}
+
+	public void setOrderComment(String orderComment) {
+		this.orderComment = orderComment;
+	}
+
+	public Set getStadiumPlaces() {
+		return this.stadiumPlaces;
+	}
+
+	public void setStadiumPlaces(Set stadiumPlaces) {
+		this.stadiumPlaces = stadiumPlaces;
 	}
 
 	public Set getOrderContents() {
@@ -132,14 +195,6 @@ public class PlaceOrder implements java.io.Serializable {
 
 	public void setOrderContents(Set orderContents) {
 		this.orderContents = orderContents;
-	}
-
-	public String getOrderPlace() {
-		return orderPlace;
-	}
-
-	public void setOrderPlace(String orderPlace) {
-		this.orderPlace = orderPlace;
 	}
 
 }

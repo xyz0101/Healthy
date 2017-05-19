@@ -1,4 +1,6 @@
 package com.Healthy.serviceimpl;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,28 @@ public class UserDetailServiceImpl implements UserDetailService{
 	public void add(UserDetail userdetail) {
 		userdetaildao.add(userdetail);
 		
+	}
+
+	@Override
+	public UserDetail findByUserId(String userid) {
+		// TODO Auto-generated method stub
+		return (UserDetail) userdetaildao.findByUserId(userid).get(0);
+	}
+
+	@Override
+	public List findByUserPhone(String phone) {
+		return userdetaildao.findbyphone(phone);
+	}
+
+	@Override
+	public void update(UserDetail userdetail) {
+		userdetaildao.update(userdetail);
+	}
+
+	@Override
+	public List findAll() {
+		// TODO Auto-generated method stub
+		return userdetaildao.findAll();
 	}
 	
 }

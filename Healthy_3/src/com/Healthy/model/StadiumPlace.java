@@ -13,6 +13,7 @@ public class StadiumPlace implements java.io.Serializable {
 
 	private String placeId;
 	private StadiumMain stadiumMain;
+	private PlaceOrder placeOrder;
 	private String placeName;
 	private String placePhoto;
 	private String placePrice;
@@ -40,10 +41,12 @@ public class StadiumPlace implements java.io.Serializable {
 
 	/** full constructor */
 	public StadiumPlace(String placeId, StadiumMain stadiumMain,
-			String placeName, String placePhoto, String placePrice,
-			String placeLocation, Short placeStatus, Set placeOrders) {
+			PlaceOrder placeOrder, String placeName, String placePhoto,
+			String placePrice, String placeLocation, Short placeStatus,
+			Set placeOrders) {
 		this.placeId = placeId;
 		this.stadiumMain = stadiumMain;
+		this.placeOrder = placeOrder;
 		this.placeName = placeName;
 		this.placePhoto = placePhoto;
 		this.placePrice = placePrice;
@@ -68,6 +71,14 @@ public class StadiumPlace implements java.io.Serializable {
 
 	public void setStadiumMain(StadiumMain stadiumMain) {
 		this.stadiumMain = stadiumMain;
+	}
+
+	public PlaceOrder getPlaceOrder() {
+		return this.placeOrder;
+	}
+
+	public void setPlaceOrder(PlaceOrder placeOrder) {
+		this.placeOrder = placeOrder;
 	}
 
 	public String getPlaceName() {

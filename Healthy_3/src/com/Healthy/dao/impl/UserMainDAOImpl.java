@@ -54,5 +54,13 @@ public class UserMainDAOImpl extends HibernateDaoSupport implements UserMainDAO{
 		return this.getHibernateTemplate().find(FIND_BY_ID, new String[]{id});
 		
 	}
+	@Override
+	public void update(UserMain user) {
+		HibernateTemplate tmp=getHibernateTemplate();
+		tmp.getSessionFactory().getCurrentSession().setFlushMode(FlushMode.AUTO);
+		tmp.update(user);
+		tmp.flush();
+		System.out.println("ÐÞ¸Ä³É¹¦");
+	}
 
 }

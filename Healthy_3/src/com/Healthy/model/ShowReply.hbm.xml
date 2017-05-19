@@ -13,14 +13,20 @@
         <many-to-one name="healthyShow" class="com.Healthy.model.HealthyShow" fetch="select">
             <column name="show_id" length="50" not-null="true" />
         </many-to-one>
-        <property name="userId" type="java.lang.String">
-            <column name="user_id" length="50" not-null="true" />
+        <property name="replyUser" type="java.lang.String">
+            <column name="reply_user" length="50" not-null="true" />
         </property>
         <property name="replyContent" type="java.lang.String">
             <column name="reply_content" length="500" not-null="true" />
         </property>
         <property name="replyTime" type="java.sql.Timestamp">
             <column name="reply_time" length="19" not-null="true" />
+        </property>
+        <property name="replyImage" type="java.lang.String">
+            <column name="reply_image" length="500" />
+        </property>
+        <property name="replyAgree" type="java.lang.Integer">
+            <column name="reply_agree" />
         </property>
     </class>
 </hibernate-mapping>

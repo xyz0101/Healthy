@@ -13,6 +13,10 @@ public class HealthyerServiceImpl implements HealthyerService {
 	@Override
 	public Healthyer find(String name) {
 		// TODO Auto-generated method stub
+		Healthyer h = new Healthyer();
+		if( healthyerdao.find(name).size()==0)
+			return null;
+		else
 		return (Healthyer) healthyerdao.find(name).get(0);
 	}
 

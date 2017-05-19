@@ -67,16 +67,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		b=false;
        }
 		//alert(reg.test("15115778766"))
-		else if(reg.test(t)){
-		$("#tphone").css("color","gray");
-		$("#tphone").html("手机号输入正确");
-		$("#tphone").css("display","block");
-		b= true; 
-		}else{
+		else if(!reg.test(t)){
 		$("#tphone").css("color","red");
 		$("#tphone").html("手机号格式不正确");
 		$("#tphone").css("display","block");
 		b= false;
+		}else{
+		
+		 $.ajax({
+                    type: "post",
+                    async:false,//将异步改为同步才能按顺序执行方法
+                    url: "findphone",
+                    data: "phone=" +t,
+                    success: function(msg){
+                  
+                    if(msg=="have"){   
+                                   
+                    	$("#tphone").css("color","red");
+			             $("#tphone").css("display","block");
+			                $("#tphone").html("该手机号已存在");
+			                a= false;
+                        }
+                        else {
+                         $("#tphone").css("color","gray");
+							$("#tphone").html("手机号输入正确");
+						$("#tphone").css("display","block");
+							b= true;              
+                      }                     
+                   }
+               });
+		
 		}
 		
 		} 
@@ -104,10 +124,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
         
         function checkName(t){
-        if(t==""){
+        if(t==""||!/^[^ ]{1,16}$/.test(t)){
             $("#tname").css("color","red");
              $("#tname").css("display","block");
-                $("#tname").html("用户名不能为空");
+                $("#tname").html("用户名格式不正确");
                a= false;
             }else{
               $("#tname").css("display","none");
@@ -117,10 +137,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     async:false,//将异步改为同步才能按顺序执行方法
                     url: "findname",
                     data: "name=" +t,
-                    success: function(data){
-                    var result = JSON.parse(data);
-                 //   alert(result) 
-                    if(result>=1){   
+                    success: function(msg){
+                  //var result = JSON.parse(data);
+                   // alert(msg) 
+                    if(msg=="have"){   
                                    
                     	$("#tname").css("color","red");
 			             $("#tname").css("display","block");
@@ -166,13 +186,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 </div>
 					 <div class="menu">
 						  <a class="toggleMenu" href="#"><img src="img/nav.png" alt="" /></a>
-						    <ul class="nav" id="nav">
+						   <ul class="nav" id="nav">
 						    	<li><a href="tosport">首页</a></li>
 						    	<li><a href="Tosportproject">运动项目</a></li>
-						    	<li><a href="shop.html">运动日历</a></li>
-						    	<li><a href="experiance.html">运动社区</a></li>
+						    	<li><a href="toHealthyKnow">健身常识</a></li>
+						    	<li><a href="toAllSpace">运动社区</a></li>
 						    	
-								<li><a href="contact.html">联系我们</a></li>										
+								<li><a href="contact.html">联系我们</a></li>									
 								<div class="clear"></div>
 							</ul>
 							<script type="text/javascript" src="js1/responsive-nav.js"></script>
@@ -197,19 +217,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							new UISearch( document.getElementById( 'sb-search' ) );
 						</script>
 				     <ul class="icon1 sub-icon1 profile_img">
-					 <li><a class="active-icon c1" href="#"> </a>
+					 <li>
+					 <a class="active-icon c1" href="#"> </a>
 						<ul class="sub-icon1 list">
-						  <div class="product_control_buttons">
-						  	<a href="#"><img src="img/edit.png" alt=""/></a>
+					<c:choose>
+  					<c:when test="${sessionScope.user1==null}">
+  					
+  					  <div class="product_control_buttons">
+						   <!--  	<a href="#"><img src="img/edit.png" alt=""/></a>-->
 						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
 						  </div>
 						   <div class="clear"></div>
-						    
-						 <c:choose>
-  					<c:when test="${sessionScope.user1==null}">
   					 <li class="list_img"><img src="img/1.jpg" width="50px" height="50px"  alt=""/></li>
-						  
-						  <li class="list_desc"><h4 ><a id="userinfo" href="#">游客你好！</a></h4><span class="actual">
+						 
+						  <li class="list_desc"><h4 ><a id="userinfo"name="" href="javascript:;">游客你好！</a></h4><span class="actual">
                           </span></li>
 						  <div class="login_buttons">
 							 <div class="check_button"><a href="ToRegister">注册</a></div>
@@ -219,9 +240,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  <div class="clear"></div>
 						  </c:when>
 						  <c:otherwise>
+						  <div class="product_control_buttons">
+						  	<a href="#"><img src="img/edit.png" alt=""/></a>
+						  		<a href="#"><img src="img/close_edit.png" alt=""/></a>
+						  </div>
+						   <div class="clear"></div>
+						  
 						   <li class="list_img"><img src="${sessionScope.user1.getUserPic().getUserPic()}" width="50px" height="50px"  alt=""/></li>
 						  
-						   <li class="list_desc"><h4 ><a id="userinfo" href="#">${sessionScope.user1.userNickname}</a></h4><span class="actual">
+						   <li class="list_desc"><h4 ><a id="userinfo" name="${sessionScope.user1.userId}" href="#">${sessionScope.user1.userNickname}</a></h4><span class="actual">
                           15级</span></li>
 						  <div class="login_buttons">
 							<!--  <div class="check_button"><a href="Register">注册</a></div> -->
@@ -272,7 +299,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										
                                     <div>
                                         <span>性别<label>*</label></span>
-                                      <div id="sex">  <label	><input type="radio" name="userSex" />男</label><label id="l2" ><input type="radio" name="userSex" checked="checked" />女</label>
+                                      <div id="sex">  <label	><input type="radio" name="userSex" value="男"/>男</label><label id="l2" ><input type="radio" value="女"name="userSex" checked="checked" />女</label>
                                     </div>
                                     </div>
                                     <div class="clear"> </div>
@@ -291,73 +318,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   </div>
 	  </div>
 	  <div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Products</h4>
-							<li><a href="#">Mens</a></li>
-							<li><a href="#">Womens</a></li>
-							<li><a href="#">Youth</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Newsletter</h4>
-							<div class="footer_search">
-				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
-				    		   </form>
-					        </div>
-							<ul class="social">	
-							  <li class="facebook"><a href="#"><span> </span></a></li>
-							  <li class="twitter"><a href="#"><span> </span></a></li>
-							  <li class="instagram"><a href="#"><span> </span></a></li>	
-							  <li class="pinterest"><a href="#"><span> </span></a></li>	
-							  <li class="youtube"><a href="#"><span> </span></a></li>										  				
-						    </ul>
-		   				</ul>
-					</div>
-				</div>
-				<div class="row footer_bottom">
-				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-		            </div>
-					  <dl id="sample" class="dropdown">
-				        <dt><a href="#"><span>Change Region</span></a></dt>
-				        <dd>
-				            <ul>
-				                <li><a href="#">Australia<img class="flag" src="img/as.png" alt="" /><span class="value">AS</span></a></li>
-				                <li><a href="#">Sri Lanka<img class="flag" src="img/srl.png" alt="" /><span class="value">SL</span></a></li>
-				                <li><a href="#">Newziland<img class="flag" src="img/nz.png" alt="" /><span class="value">NZ</span></a></li>
-				                <li><a href="#">Pakistan<img class="flag" src="img/pk.png" alt="" /><span class="value">Pk</span></a></li>
-				                <li><a href="#">United Kingdom<img class="flag" src="img/uk.png" alt="" /><span class="value">UK</span></a></li>
-				                <li><a href="#">United States<img class="flag" src="img/us.png" alt="" /><span class="value">US</span></a></li>
-				            </ul>
-				         </dd>
-	   				  </dl>
-   				</div>
-			</div>
+		
 		</div>
 </body>	
 </html>

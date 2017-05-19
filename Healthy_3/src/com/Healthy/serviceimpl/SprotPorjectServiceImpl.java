@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Healthy.dao.SportProjectDAO;
+import com.Healthy.model.Page;
 import com.Healthy.model.SportProject;
 import com.Healthy.service.SportProjectService;
+import com.util.Utils;
 @Service
 public class SprotPorjectServiceImpl implements SportProjectService{
 	@Autowired
@@ -29,8 +31,17 @@ public class SprotPorjectServiceImpl implements SportProjectService{
 
 	@Override
 	public List<SportProject> find(String id) {
-		// TODO Auto-generated method stub
 		return sportprojectdao.find(id);
+	}
+
+	@Override
+	public void update(SportProject sportproject) {
+		sportprojectdao.update(sportproject);
+	}
+
+	@Override
+	public List findByPage(Page page) {
+		return sportprojectdao.findByPage(page);
 	}
 
 }

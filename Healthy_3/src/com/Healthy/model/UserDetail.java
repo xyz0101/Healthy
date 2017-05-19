@@ -1,5 +1,7 @@
 package com.Healthy.model;
 
+import java.util.Date;
+
 /**
  * UserDetail entity. @author MyEclipse Persistence Tools
  */
@@ -16,7 +18,10 @@ public class UserDetail implements java.io.Serializable {
 	private String userSignature;
 	private String userTel;
 	private String userQq;
-	private String userLevel;
+	private Integer userLevel;
+	private Date userBirth;
+	private String userBlood;
+	private String userEmotion;
 
 	// Constructors
 
@@ -34,7 +39,8 @@ public class UserDetail implements java.io.Serializable {
 	/** full constructor */
 	public UserDetail(String userId, UserMain userMain, Boolean userPermission,
 			String userTag, String userLocation, String userSignature,
-			String userTel, String userQq, String userLevel) {
+			String userTel, String userQq, Integer userLevel, Date userBirth,
+			String userBlood, String userEmotion) {
 		this.userId = userId;
 		this.userMain = userMain;
 		this.userPermission = userPermission;
@@ -44,6 +50,9 @@ public class UserDetail implements java.io.Serializable {
 		this.userTel = userTel;
 		this.userQq = userQq;
 		this.userLevel = userLevel;
+		this.userBirth = userBirth;
+		this.userBlood = userBlood;
+		this.userEmotion = userEmotion;
 	}
 
 	// Property accessors
@@ -112,12 +121,36 @@ public class UserDetail implements java.io.Serializable {
 		this.userQq = userQq;
 	}
 
-	public String getUserLevel() {
+	public Integer getUserLevel() {
 		return this.userLevel;
 	}
 
-	public void setUserLevel(String userLevel) {
+	public void setUserLevel(Integer userLevel) {
 		this.userLevel = userLevel;
+	}
+
+	public Date getUserBirth() {
+		return this.userBirth;
+	}
+
+	public void setUserBirth(Date userBirth) {
+		this.userBirth = userBirth;
+	}
+
+	public String getUserBlood() {
+		return this.userBlood;
+	}
+
+	public void setUserBlood(String userBlood) {
+		this.userBlood = userBlood;
+	}
+
+	public String getUserEmotion() {
+		return this.userEmotion;
+	}
+
+	public void setUserEmotion(String userEmotion) {
+		this.userEmotion = userEmotion;
 	}
 
 }

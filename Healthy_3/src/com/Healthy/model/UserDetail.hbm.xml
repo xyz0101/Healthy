@@ -8,7 +8,7 @@
     <class name="com.Healthy.model.UserDetail" table="user_detail" catalog="healthy">
         <id name="userId" type="java.lang.String">
             <column name="user_id" length="50" />
-            <generator class="assigned"/>
+            <generator class="assigned" />
         </id>
         <one-to-one name="userMain" class="com.Healthy.model.UserMain" constrained="true"></one-to-one>
         <property name="userPermission" type="java.lang.Boolean">
@@ -41,10 +41,19 @@
                 <comment>绑定的QQ</comment>
             </column>
         </property>
-        <property name="userLevel" type="java.lang.String">
-            <column name="user_level" length="20">
+        <property name="userLevel" type="java.lang.Integer">
+            <column name="user_level">
                 <comment>用户的等级</comment>
             </column>
+        </property>
+        <property name="userBirth" type="java.util.Date">
+            <column name="user_birth" length="10" />
+        </property>
+        <property name="userBlood" type="java.lang.String">
+            <column name="user_blood" length="10" />
+        </property>
+        <property name="userEmotion" type="java.lang.String">
+            <column name="user_emotion" length="10" />
         </property>
     </class>
 </hibernate-mapping>

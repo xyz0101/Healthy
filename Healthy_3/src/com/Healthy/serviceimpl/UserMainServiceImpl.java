@@ -20,7 +20,10 @@ public class UserMainServiceImpl implements UserMainService{
 	}
 	@Override
 	public UserMain find(String name) {
-		UserMain user = (UserMain) usermaindao.findbyname(name).get(0);
+		UserMain user = new UserMain();
+		if(usermaindao.findbyname(name).size()==0)
+			return null;
+		else user= (UserMain) usermaindao.findbyname(name).get(0);
 		System.out.println("ID:::"+user.getUserId());
 		return user;
 	}
@@ -38,7 +41,7 @@ public class UserMainServiceImpl implements UserMainService{
 		usermaindao.add(user);
 		return null;
 	}
-	@SuppressWarnings("rawtypes")
+	
 	@Override
 	public List findname(String name) {
 		return usermaindao.findbyname(name);
@@ -63,6 +66,11 @@ public class UserMainServiceImpl implements UserMainService{
 	public UserMain findId(String id) {
 		// TODO Auto-generated method stub
 		return (UserMain) usermaindao.findbyId(id).get(0);
+	}
+	@Override
+	public void update(UserMain user) {
+		usermaindao.update(user);
+		
 	}
 
 }

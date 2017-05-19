@@ -17,7 +17,20 @@
 
   <!-- 视图解析器 -->
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="order" value="3" /><!-- 优先级 -->  
    <property name="prefix" value="/jsp/" />  
+   <property name="suffix" value=".jsp" /> 
+  </bean>
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="com.Healthy.view.MyView"></property>
+    <property name="order" value="0" /><!-- 优先级 -->  
+   <property name="prefix" value="/jsp/adminjsp/" />  
+   <property name="suffix" value=".jsp" /> 
+  </bean>
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="com.Healthy.view.MyView"></property>
+    <property name="order" value="1" /><!-- 优先级 -->  
+   <property name="prefix" value="/jsp/sellerjsp/" />  
    <property name="suffix" value=".jsp" /> 
   </bean>
 

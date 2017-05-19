@@ -12,4 +12,6 @@ public interface StadiumPlaceDAO {
 		public List findbyStadiumId(String stadiumid);
 		public void delete(StadiumPlace stadiumplace);
 		public void update(StadiumPlace stadiumplace);
+		public List findAll();
+		public List findByname(String name);
 }
